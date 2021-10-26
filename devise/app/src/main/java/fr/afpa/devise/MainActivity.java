@@ -32,12 +32,33 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void onConvert(View v){
-        Log.i(TAG , "onConvert");
+        // Log.i(TAG , "onConvert");
         Toast.makeText(getBaseContext(),"onConvert", Toast.LENGTH_SHORT).show();
-        EditText count = (EditText) findViewById(R.id.iMontant);
+        EditText eMontant = (EditText) findViewById(R.id.iMontant);
+        String strMontant = eMontant.getText().toString();
+        Double dbMontant = Double.valueOf(strMontant);
         Spinner nbDepart = (Spinner) findViewById(R.id.SpinnerDepart);
         Spinner nbArrivee = (Spinner) findViewById(R.id.SpinnerArrivee);
-        nbDepart.getSelectedItem();
+        String dNbDepart = (String) nbDepart.getSelectedItem().toString();
+        String dNbArrivee = (String) nbArrivee.getSelectedItem().toString();
+        if (dNbDepart == dNbArrivee)
+        {
+            Toast.makeText(getBaseContext(), "Les devises sont identique",
+                    Toast.LENGTH_LONG).show();
+
+        }else if(eMontant.equals(null)==false || dNbArrivee.equals(null)==false || dNbDepart.equals(null)==false)
+        {
+            Toast.makeText(getBaseContext(), "Les champs sont vides",
+                    Toast.LENGTH_LONG).show();
+        }else
+        {
+            Log.i(TAG, "Tout va bien");
+        }
+
+
+
+
+
     }
     public void onQuitt(View v){
         Log.i(TAG , "onQuitt");
