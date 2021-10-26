@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Devise</string>
+    <string-array name="liste_devises">
+        <item>Elige una moneda</item>
+        <item>Livre</item>
+        <item>Euros</item>
+        <item>Dollard</item></string-array>
+    <string name="tDepart">Moneda de salida </string>
+    <string name="tArrive">Moneda de llegada</string>
+    <string name="tMontant">Creciente</string>
+    <string name="bQuitt">Salir</string>
+    <string name="bConvert">Convertir</string>
+</resources>

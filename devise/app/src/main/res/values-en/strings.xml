@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">currency</string>
+    <string-array name="liste_devises">
+        <item>Choose a currency</item>
+        <item>Livre</item>
+        <item>Euros</item>
+        <item>Dollard</item></string-array>
+    <string name="tDepart">Devise of Start</string>
+    <string name="tArrive">Devise of End</string>
+    <string name="tMontant">Value</string>
+    <string name="bQuitt">Leave</string>
+    <string name="bConvert">Convert</string>
+</resources>
