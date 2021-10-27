@@ -2,6 +2,7 @@ package fr.afpa.devise;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         charcheSpinner(R.id.SpinnerArrivee);
         charcheSpinner(R.id.SpinnerDepart);
     }
-    public void onConvert(View v){
+    public void onConvert(View v) {
         // Log.i(TAG , "onConvert");
         //Toast.makeText(getBaseContext(),"onConvert", Toast.LENGTH_SHORT).show();
 
@@ -51,38 +52,34 @@ public class MainActivity extends AppCompatActivity {
         String dNbDepart = (String) nbDepart.getSelectedItem().toString();
         String dNbArrivee = (String) nbArrivee.getSelectedItem().toString();
         // We check if fields are empty or in the wrong format
-        if(strMontant.equals("") || strMontant.matches("[^0-9]")|| dNbDepart.equals("")
-        || dNbArrivee.equals(""))
-        {
-            Toast.makeText(getBaseContext(), "Des champs sont vides et doivent être renseignées",
-                    Toast.LENGTH_LONG).show();
-        // We check if currency of start and end are not the same
-        }else if (dNbDepart.equals(dNbArrivee))
-        {
-            Toast.makeText(getBaseContext(), "Les devises sont identique",
-                    Toast.LENGTH_LONG).show();
+        if (doConvertir(dNbDepart, dNbArrivee,strMontant)){
 
-        } else
-            // We put a try control to check if the field is a Number
-        {   try {
 
-            Double dbMontant = Double.valueOf(strMontant);
-            Double res = Convert.convertir(dNbDepart,dNbArrivee,dbMontant);
-            // Calculate the number given in the tatget currency
-            String msg = strMontant + " " + dNbDepart + " fait " + res + " " + dNbArrivee;
-            Toast.makeText(getBaseContext(), msg,
+            try {
+
+                Double dbMontant = Double.valueOf(strMontant);
+                Double res = Convert.convertir(dNbDepart, dNbArrivee, dbMontant);
+                Intent intent = new Intent(this, ConvertirARActivity.class);
+                String msg = strMontant + " " + dNbDepart + " fait " + res + " " + dNbArrivee;
+                intent.putExtra("msg",msg);
+               startActivity(intent);
+                // Calculate the number given in the tatget currency
+            } catch (NumberFormatException e) {
+                Toast.makeText(getBaseContext(), "Vous devez enter un Nombre ",
+                        Toast.LENGTH_LONG).show();
+            }
+        }else{
+            Toast.makeText(getBaseContext(), "Des champs sont vides, vous devez les remplir",
                     Toast.LENGTH_LONG).show();
-        }catch (NumberFormatException e){
-            Toast.makeText(getBaseContext(), "Vous devez enter un Nombre ",
-                    Toast.LENGTH_LONG).show();
-        }
 
         }
-
-
-
-
     }
+
+
+
+
+
+
     protected void  chargeDevises(){
         Map<String,Double>  tableau = Convert.getConversionTable();
         this.arrayOfKey = new ArrayList<String>(tableau.keySet());
@@ -96,9 +93,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    protected boolean doConvertir(String strCurencySart, String strCurrencyTarget, String montant){
+
+        if(montant.equals("") || montant.matches("[^0-9]")|| strCurencySart.equals("")
+                ||strCurrencyTarget.equals(""))
+        {
+            return false;
+        }else if (strCurencySart.equals(strCurrencyTarget))
+        {
+            Toast.makeText(getBaseContext(), "Il doit y avoir deux devises différentes",
+                    Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+        }
+
     public void onQuitt(View v){
         Log.i(TAG , "onQuitt");
         Toast.makeText(getBaseContext(),"onQuitt", Toast.LENGTH_SHORT).show();
         System.exit(0);
     }
+
 }

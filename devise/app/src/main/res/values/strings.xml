@@ -15,5 +15,6 @@
     <string name="tMontant">Montant</string>
     <string name="bQuitt">Quitter</string>
     <string name="bConvert">Convertir</string>
+    <string name="tRes" translatable="false">Résultat</string>
 
 </resources>
