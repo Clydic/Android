@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:fontFamily="@font/starjedi"
     android:orientation="vertical"
-    android:background="@color/orange">
+    android:background="@drawable/tardis">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,9 +25,8 @@
             android:id="@+id/SpinnerDepart"
             android:layout_width="249dp"
             android:layout_height="wrap_content"
-            android:entries="@array/liste_devises"
             tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="16dp" />
+            tools:layout_editor_absoluteY="16dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -48,9 +47,8 @@
             android:id="@+id/SpinnerArrivee"
             android:layout_width="249dp"
             android:layout_height="wrap_content"
-            android:entries="@array/liste_devises"
             tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="16dp" />
+            tools:layout_editor_absoluteY="16dp"/>
     </LinearLayout>
 
 
@@ -58,7 +56,9 @@
         android:id="@+id/iMontant"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/tMontant" />
+        android:hint="@string/tMontant"
+        android:inputType="numberDecimal"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"

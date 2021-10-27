@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">devise</string>
-    <string-array name="liste_devises">
+    <!--<string-array name="liste_devises">
         <item>Choisissez une devise</item>
         <item>Livre</item>
-        <item>Euros</item>
-        <item>Dollard</item></string-array>
+        <item>Euro</item>
+        <item>Dollars US</item>
+        <item>Francs CFA</item>
+        <item>Yen</item>
+        <item>Dirham</item>
+
+    </string-array>-->
     <string name="tDepart">Devise de Départ</string>
     <string name="tArrive">Devise d\'Arrivée</string>
     <string name="tMontant">Montant</string>

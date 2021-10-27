@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="@color/orange">
+    android:background="@drawable/tardis">
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -17,7 +17,6 @@
         android:id="@+id/SpinnerDepart"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:entries="@array/liste_devises"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="16dp" />
     <TextView
@@ -31,7 +30,6 @@
         android:id="@+id/SpinnerArrivee"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:entries="@array/liste_devises"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="16dp" />
 
