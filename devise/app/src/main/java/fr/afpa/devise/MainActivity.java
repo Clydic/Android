@@ -10,17 +10,18 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import metier.Convert;
 
 public class MainActivity extends AppCompatActivity {
+    // -------------------------------------
+    //                Attribut
+    // -------------------------------------
     private Spinner sPinnerDepart;
     private Spinner sPinnerArrived;
     private EditText tMoney;
@@ -28,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
     private  Button bQuitt;
     private final static String TAG ="MainActivity";
     private ArrayList<String> arrayOfKey;
+    private String strDepart = null;
+    private String strArrivee = null;
+    // -------------------------------------
+    //         Méhodes Applicatives
+    // -------------------------------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         charcheSpinner(R.id.SpinnerArrivee);
         charcheSpinner(R.id.SpinnerDepart);
     }
-    public void onConvert(View v) {
+    public void Convert(View v) {
         // Log.i(TAG , "onConvert");
         //Toast.makeText(getBaseContext(),"onConvert", Toast.LENGTH_SHORT).show();
 
@@ -59,11 +65,11 @@ public class MainActivity extends AppCompatActivity {
 
                 Double dbMontant = Double.valueOf(strMontant);
                 Double res = Convert.convertir(dNbDepart, dNbArrivee, dbMontant);
-                Intent intent = new Intent(this, ConvertirARActivity.class);
+                Intent intent = new Intent(this, ConvertirActivity.class);
                 String msg = strMontant + " " + dNbDepart + " fait " + res + " " + dNbArrivee;
                 intent.putExtra("msg",msg);
                startActivity(intent);
-                // Calculate the number given in the tatget currency
+                // Calculate the number given in the target currency
             } catch (NumberFormatException e) {
                 Toast.makeText(getBaseContext(), "Vous devez enter un Nombre ",
                         Toast.LENGTH_LONG).show();
@@ -75,7 +81,38 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void ConvertAR(View v){
+        EditText eMontant = (EditText) findViewById(R.id.iMontant);
+        String strMontant = eMontant.getText().toString();
 
+        Spinner nbDepart = (Spinner) findViewById(R.id.SpinnerDepart);
+        Spinner nbArrivee = (Spinner) findViewById(R.id.SpinnerArrivee);
+        String dNbDepart = (String) nbDepart.getSelectedItem().toString();
+        String dNbArrivee = (String) nbArrivee.getSelectedItem().toString();
+        // We check if fields are empty or in the wrong format
+        if (doConvertir(dNbDepart, dNbArrivee,strMontant)){
+
+
+            try {
+
+                Double dbMontant = Double.valueOf(strMontant);
+                Double res = Convert.convertir(dNbDepart, dNbArrivee, dbMontant);
+                Intent intent = new Intent(this, ConvertirActivity.class);
+                String msg = strMontant + " " + dNbDepart + " fait " + res + " " + dNbArrivee;
+                intent.putExtra("msg",msg);
+                startActivityForResult(intent,1);
+                // Calculate the number given in the target currency
+            } catch (NumberFormatException e) {
+                Toast.makeText(getBaseContext(), "Vous devez enter un Nombre ",
+                        Toast.LENGTH_LONG).show();
+            }
+        }else{
+            Toast.makeText(getBaseContext(), "Des champs sont vides, vous devez les remplir",
+                    Toast.LENGTH_LONG).show();
+
+        }
+
+    }
 
 
 

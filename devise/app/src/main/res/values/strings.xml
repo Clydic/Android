@@ -1,20 +1,16 @@
 <resources>
-    <string name="app_name">devise</string>
-    <!--<string-array name="liste_devises">
-        <item>Choisissez une devise</item>
-        <item>Livre</item>
-        <item>Euro</item>
-        <item>Dollars US</item>
-        <item>Francs CFA</item>
-        <item>Yen</item>
-        <item>Dirham</item>
 
-    </string-array>-->
+    <!-- Main class -->
+    <string name="app_name">devise</string>
     <string name="tDepart">Devise de Départ</string>
     <string name="tArrive">Devise d\'Arrivée</string>
     <string name="tMontant">Montant</string>
     <string name="bQuitt">Quitter</string>
     <string name="bConvert">Convertir</string>
+    <string name="bConvertAR">ConvertirAR</string>
+
+
+    <!-- Convert class -->
     <string name="tRes" translatable="false">Résultat</string>
 
 </resources>

@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:fontFamily="@font/starjedi"
     android:orientation="vertical"
-    android:background="@drawable/tardisland">
+    android:background="@drawable/citrouille">
 
     <LinearLayout
         android:layout_width="match_parent"
