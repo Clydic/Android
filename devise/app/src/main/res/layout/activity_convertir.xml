@@ -22,7 +22,9 @@
             android:layout_height="wrap_content"
             android:text="@string/tRes"
             tools:layout_editor_absoluteX="172dp"
-            tools:layout_editor_absoluteY="96dp" />
+            tools:layout_editor_absoluteY="96dp"
+
+            />
 
         <Button
             android:id="@+id/retour"

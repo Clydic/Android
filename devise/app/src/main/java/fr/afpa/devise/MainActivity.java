@@ -5,11 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -25,12 +29,14 @@ public class MainActivity extends AppCompatActivity {
     private Spinner sPinnerDepart;
     private Spinner sPinnerArrived;
     private EditText tMoney;
+    private TextView tMsg;
     private Button bConvert;
     private  Button bQuitt;
     private final static String TAG ="MainActivity";
     private ArrayList<String> arrayOfKey;
-    private String strDepart = null;
-    private String strArrivee = null;
+    public String strDepart = null;
+    public String strArrivee = null;
+    public Double dbMontant = null;
     // -------------------------------------
     //         Méhodes Applicatives
     // -------------------------------------
@@ -50,23 +56,23 @@ public class MainActivity extends AppCompatActivity {
         //Toast.makeText(getBaseContext(),"onConvert", Toast.LENGTH_SHORT).show();
 
         // We initiate variables
-        EditText eMontant = (EditText) findViewById(R.id.iMontant);
-        String strMontant = eMontant.getText().toString();
+        this.tMoney = (EditText) findViewById(R.id.iMontant);
+        String strMontant = this.tMoney.getText().toString();
 
-        Spinner nbDepart = (Spinner) findViewById(R.id.SpinnerDepart);
-        Spinner nbArrivee = (Spinner) findViewById(R.id.SpinnerArrivee);
-        String dNbDepart = (String) nbDepart.getSelectedItem().toString();
-        String dNbArrivee = (String) nbArrivee.getSelectedItem().toString();
-        // We check if fields are empty or in the wrong format
-        if (doConvertir(dNbDepart, dNbArrivee,strMontant)){
+        this.sPinnerDepart = (Spinner) findViewById(R.id.SpinnerDepart);
+        this.sPinnerArrived = (Spinner) findViewById(R.id.SpinnerArrivee);
+        this.strDepart = (String) this.sPinnerDepart.getSelectedItem().toString();
+        this.strArrivee = (String)this.sPinnerArrived.getSelectedItem().toString();
+        // We check if fields are empty or has a  the wrong format
+        if (doConvertir(this.strDepart, this.strArrivee,strMontant)){
 
 
             try {
 
-                Double dbMontant = Double.valueOf(strMontant);
-                Double res = Convert.convertir(dNbDepart, dNbArrivee, dbMontant);
+                this.dbMontant = Double.valueOf(strMontant);
+                Double res = Convert.convertir(strDepart, strArrivee, dbMontant);
                 Intent intent = new Intent(this, ConvertirActivity.class);
-                String msg = strMontant + " " + dNbDepart + " fait " + res + " " + dNbArrivee;
+                String msg = strMontant + " " + strDepart + " fait " + res + " " + strArrivee;
                 intent.putExtra("msg",msg);
                startActivity(intent);
                 // Calculate the number given in the target currency
@@ -81,25 +87,40 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    protected  void onActivityResult(int requestCode, int resultCode,Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        Log.i(TAG, "onActivityResult");
+        switch (requestCode){
+            case 1 :
+                String retourMsg = intent.getStringExtra("msg");
+                tMsg = findViewById(R.id.textRes);
+                tMsg.setText(retourMsg);
+            break;
+            default:
+                Toast.makeText(getBaseContext(), "Il semblerait qu'il y ai un soucis",
+                        Toast.LENGTH_SHORT).show();
+        }
+    }
     public void ConvertAR(View v){
         EditText eMontant = (EditText) findViewById(R.id.iMontant);
         String strMontant = eMontant.getText().toString();
 
         Spinner nbDepart = (Spinner) findViewById(R.id.SpinnerDepart);
         Spinner nbArrivee = (Spinner) findViewById(R.id.SpinnerArrivee);
-        String dNbDepart = (String) nbDepart.getSelectedItem().toString();
-        String dNbArrivee = (String) nbArrivee.getSelectedItem().toString();
+        this.strDepart = (String) nbDepart.getSelectedItem().toString();
+        this.strArrivee = (String) nbArrivee.getSelectedItem().toString();
         // We check if fields are empty or in the wrong format
-        if (doConvertir(dNbDepart, dNbArrivee,strMontant)){
+        if (doConvertir(this.strDepart, strArrivee,strMontant)){
 
 
             try {
 
-                Double dbMontant = Double.valueOf(strMontant);
-                Double res = Convert.convertir(dNbDepart, dNbArrivee, dbMontant);
-                Intent intent = new Intent(this, ConvertirActivity.class);
-                String msg = strMontant + " " + dNbDepart + " fait " + res + " " + dNbArrivee;
-                intent.putExtra("msg",msg);
+                this.dbMontant = Double.valueOf(strMontant);
+                Intent intent = new Intent(this, ConvertirAR.class);
+                Log.i(TAG,"TEST" + this.dbMontant);
+                intent.putExtra("dbMontant",this.dbMontant);
+                intent.putExtra("strDepart",this.strDepart);
+                intent.putExtra("strArrivee",this.strArrivee);
                 startActivityForResult(intent,1);
                 // Calculate the number given in the target currency
             } catch (NumberFormatException e) {
@@ -149,6 +170,26 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG , "onQuitt");
         Toast.makeText(getBaseContext(),"onQuitt", Toast.LENGTH_SHORT).show();
         System.exit(0);
+    }
+
+    public boolean onCreateOptionMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        // Instanciation du menu XML spécifier en un objet  Menu
+        inflater.inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.convertir:
+                return true;
+            case R.id.parametre:
+                return true;
+
+            case R.id.quitter:
+                return true;
+        }
+        return false;
     }
 
 }

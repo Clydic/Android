@@ -11,6 +11,6 @@
 
 
     <!-- Convert class -->
-    <string name="tRes" translatable="false">Résultat</string>
+    <string name="tRes" translatable="false"></string>
 
 </resources>

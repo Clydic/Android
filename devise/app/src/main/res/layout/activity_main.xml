@@ -55,40 +55,56 @@
             android:inputType="numberDecimal"
             android:background="@color/white"
             />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+                <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
 
-        <Button
-            android:id="@+id/bConvert"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/bConvert"
-            android:onClick="Convert"
-            />
+            <Button
+                android:id="@+id/bConvert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/bConvert"
+                android:onClick="Convert"
+                />
 
-        <Button
-            android:id="@+id/bQuitt"
+            <Button
+                android:id="@+id/bQuitt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/bQuitt"
+                android:onClick="onQuitt"
+                />
+            <Button
+                android:id="@+id/bConvertAR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/bConvertAR"
+                android:onClick="ConvertAR"
+                />
+
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/bQuitt"
-            android:onClick="onQuitt"
-            />
-        <Button
-            android:id="@+id/bConvertAR"
+            >
+        <TextView
+            android:id="@+id/textRes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/bConvertAR"
-            android:onClick="ConvertAR"
+            android:textColor="@color/red"
             />
+        </LinearLayout>
     </LinearLayout>
-
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
