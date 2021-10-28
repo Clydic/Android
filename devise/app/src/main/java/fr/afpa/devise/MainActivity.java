@@ -172,7 +172,8 @@ public class MainActivity extends AppCompatActivity {
         System.exit(0);
     }
 
-    public boolean onCreateOptionMenu(Menu menu){
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         // Instanciation du menu XML spécifier en un objet  Menu
         inflater.inflate(R.menu.menu,menu);
@@ -180,8 +181,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
+
         switch (item.getItemId()){
             case R.id.convertir:
+                View vItem = (View) item.getActionView();
+
+                ConvertAR(vItem);
                 return true;
             case R.id.parametre:
                 return true;

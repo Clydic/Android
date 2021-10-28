@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Convertir"
@@ -8,6 +9,14 @@
 
     <item android:title="Paramètres"
        android:id="@+id/parametre"
+    <menu android:id="@+id/sousmenu">
+        <item android:id="@+id/date"
+            android:title="Changer la date">
+        <item android:id="@+id/langue"
+            android:title="Changer la langue"
+        <item android:id="@+id/affichage"
+            android:title="Changer l'affichage"
+    </menu>
         />
     <item android:title="Quitter"
         android:id="@+id/quitter"

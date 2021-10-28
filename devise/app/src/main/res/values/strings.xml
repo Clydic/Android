@@ -13,4 +13,6 @@
     <!-- Convert class -->
     <string name="tRes" translatable="false"></string>
 
+    <!-- Menu-->
+    <string name="affichage">Affichage</string>
 </resources>
