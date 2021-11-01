@@ -1,0 +1,65 @@
+\documentclass[a4paper, 11pt]{report}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\renewcommand{\thesection}{\arabic{section}}
+\usepackage{hyperref}
+\hypersetup{pdfborder=0 0 0}
+\newcommand{\ges}{Gessort }
+\author{Paimblanc Cédric}
+\date{\today}
+\title{Cahier des charges d'une Application de Gestion de sort}
+\begin{document}
+	\maketitle
+	\tableofcontents
+	\newpage
+	\section{Présentation de l'application \ges}
+	\label{sec:mise_en_contexte_de_l_application}
+		L'application \ges est une application qui va permettre à l'utilisateur de gérer la liste de ses
+		sorts, les trier par niveau, par nom, ou par domaine. Il pourra effectuer une recherche pour
+		chercher un sort en particulier et en consulter la description. Il aura aussi la possibilité
+		d'en ajouter, d'en supprimer de les modifier.
+	\section{Les besoins et les contraintes}	
+	\label{sec:Les besoins et les contraintes}
+		\subsection{Les besoins}
+			\paragraph{Présentation} Lors d'une séance de jeu de rôle, les lanceurs de sort possèdent 
+			une liste de sort qui s'allonge avec la montée des niveaux, et parfois retrouver la description 
+			d'un sort en particulier peut être fastidieux, et peux faire perdre la 
+			la fluidité de la séance en cours et c'est d'autant plus vrai 
+			si on utilise plusieurs livres.\\
+			Actuellement un joueur incarnant  un lanceur de sort doit soit écrire toute la description 
+			complète de tous ses sorts  et finalement avoir des dizaines de  pages, ou écrire une 
+			description plus brève au risque que certaines informations ne soit pas notés, et qui 
+			nécessite finalement une recherche difficile et longue pour plus de précisions. 
+			\paragraph{La réponse} L'application a pour but de concilier les deux, c'est à dire, 
+			avoir une liste avec une description brève qui permet en un seul coup d'œil de trouver 
+			un sort qui peut répondre à un besoin donnée, mais qui permet lorsque l'on sélectionne le dit sort d'avoir une 
+			description détaillé. De plus comme il a été dit dans l'introduction le joueur devra avoir
+			la possibilité de faire une recherche pour trouver un sort précis.  
+		\subsection{Les contraintes}
+			Comme toute applications qui se respectent, on cherche une ergonomie le plus aboutie possible.
+			L'application doit permettre une navigation fluide et intuitive, on ne veut pas que ce soit 
+			surcharger, et elle doit être utilisable si possible sur la plupart des smartphones et des 
+			tablettes android. 
+			\subsection{Version 1}
+				En toute premier lieu, l'application doit pouvoir afficher la liste complète des sorts
+				que l'utilisateur aura ajouté, chaque sort doit pouvoir afficher un description complète
+				dans une autre page lorsqu'il est sélectionné. L'utilisateur doit pouvoir supprimer ses 
+				sorts, les mettre à jour pour une raison quelconque.  
+			\subsection{Version 2}
+				La première amélioration à apporter sera d'afficher les descriptions brèves sous le nom des 
+				sorts selon les possibilités techniques, une barre de recherche devra être ajoutée afin 
+				que l'utilisateur puisse chercher un sort spécifique sans avoir à parcourir toute sa liste,
+				une persistance des recherches facilitera des recherches futur.
+			\subsection{Version 3} 
+				La troisième version de l'application devra permettre d'afficher les sorts triés.
+				On veut pouvoir les afficher par lettre, par niveaux, ou par domaine. Une 
+				internationalisation pourra être envisagée.
+
+	%\section{Les maquettes}
+	%\label{sec:les_maquettes}
+	
+		
+
+\end{document}
