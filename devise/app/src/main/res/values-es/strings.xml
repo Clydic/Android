@@ -7,4 +7,6 @@
     <string name="bQuitt">Salir</string>
     <string name="bConvert">Convertar</string>
     <string name="bConvertAR">ConvertarAR</string>
+    <!-- Menu-->
+    <string name="affichage">Affichage</string>
 </resources>

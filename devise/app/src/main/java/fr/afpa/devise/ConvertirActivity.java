@@ -15,7 +15,7 @@ public class ConvertirActivity extends AppCompatActivity {
         setContentView(R.layout.activity_convertir);
         Intent thisIntent = getIntent();
         String msg = thisIntent.getExtras().getString("msg");
-        tMsg = findViewById(R.id.textRes);
+        tMsg = findViewById(R.id.textMsg);
         tMsg.setText(msg);
     }
 

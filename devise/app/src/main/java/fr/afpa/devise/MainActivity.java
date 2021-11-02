@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 Double res = Convert.convertir(strDepart, strArrivee, dbMontant);
                 Intent intent = new Intent(this, ConvertirActivity.class);
                 String msg = strMontant + " " + strDepart + " fait " + res + " " + strArrivee;
+                Log.i (TAG,msg);
                 intent.putExtra("msg",msg);
                startActivity(intent);
                 // Calculate the number given in the target currency

@@ -8,16 +8,16 @@
         />
 
     <item android:title="Paramètres"
-       android:id="@+id/parametre"
+       android:id="@+id/parametre">
     <menu android:id="@+id/sousmenu">
         <item android:id="@+id/date"
-            android:title="Changer la date">
+            android:title="Changer la date"/>
         <item android:id="@+id/langue"
-            android:title="Changer la langue"
+            android:title="Changer la langue"/>
         <item android:id="@+id/affichage"
-            android:title="Changer l'affichage"
+            android:title="Changer l'affichage"/>
     </menu>
-        />
+        </item>
     <item android:title="Quitter"
         android:id="@+id/quitter"
         />
