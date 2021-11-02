@@ -26,6 +26,8 @@
             android:layout_width="249dp"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="1dp"
+            android:background="@color/white"
+            android:textColor="@color/red"
             tools:layout_editor_absoluteY="16dp"/>
     </LinearLayout>
 
@@ -47,6 +49,8 @@
             android:id="@+id/SpinnerArrivee"
             android:layout_width="249dp"
             android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:textColor="@color/red"
             tools:layout_editor_absoluteX="1dp"
             tools:layout_editor_absoluteY="16dp"/>
     </LinearLayout>
@@ -58,11 +62,12 @@
         android:layout_height="wrap_content"
         android:hint="@string/tMontant"
         android:inputType="numberDecimal"
+        android:textColor="@color/red"
         />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
 
@@ -71,14 +76,42 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="Convert"
             android:text="Convertir" />
 
         <Button
             android:id="@+id/bQuitt"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Quitter" />
+
+        <Button
+            android:id="@+id/bConvertAR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="ConvertAR"
+            android:text="@string/bConvertAR" />
     </LinearLayout>
+    <TextView
+        android:id="@+id/textRes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:id="@+id/conf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/config"></ImageView>
+    </RelativeLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

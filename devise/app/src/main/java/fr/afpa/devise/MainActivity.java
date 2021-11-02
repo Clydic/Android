@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private Button bConvert;
     private  Button bQuitt;
     private final static String TAG ="MainActivity";
-    private ArrayList<String> arrayOfKey;
+
+    private ArrayList<String> arrayOfKey
     public String strDepart = null;
     public String strArrivee = null;
     public Double dbMontant = null;
@@ -44,9 +48,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        registerForContextMenu((ImageView)findViewById(R.id.conf));
         tMoney = findViewById(R.id.iMontant);
         bConvert = findViewById(R.id.bConvert);
         bQuitt = findViewById(R.id.bQuitt);
+        Integer pos = adapter.getPostion(value)
         chargeDevises();
         charcheSpinner(R.id.SpinnerArrivee);
         charcheSpinner(R.id.SpinnerDepart);
@@ -136,14 +142,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-
     protected void  chargeDevises(){
         Map<String,Double>  tableau = Convert.getConversionTable();
         this.arrayOfKey = new ArrayList<String>(tableau.keySet());
 
     }
+
+
+
 
     protected void charcheSpinner(Integer idSpinner){
         Spinner spinner = findViewById(idSpinner);
@@ -193,9 +199,38 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.quitter:
+                View vItemQ = (View) item.getActionView();
+                onQuitt(vItemQ);
                 return true;
+
+            case R.id.langue:
+                Intent changerLangue = new Intent(Settings.ACTION_LOCALE_SETTINGS);
+                startActivity(changerLangue);
+            case R.id.date:
+                Intent changerDate = new Intent(Settings.ACTION_DATE_SETTINGS);
+                startActivity(changerDate);
+            case R.id.affichage:
+                Intent changerAffichage = new Intent(Settings.ACTION_DISPLAY_SETTINGS);
+                startActivity(changerAffichage);
+
         }
         return false;
     }
 
+
+
+    public void onCreateContextMenu(ContextMenu menu, View v , ContextMenu.ContextMenuInfo menuInfo)
+
+    {
+        super.onCreateContextMenu(menu,v , menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+
+    }
+    @Override
+    public boolean onContextItemSelected(MenuItem item)
+    {
+        return onOptionsItemSelected(item);
+    }
 }
+
