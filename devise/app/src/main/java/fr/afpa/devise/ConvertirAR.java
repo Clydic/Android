@@ -17,7 +17,7 @@ public class ConvertirAR extends AppCompatActivity {
         String strDepart = intent.getExtras().getString("strDepart");
         String strArrivee = intent.getExtras().getString("strArrivee");
         Double dbMontant = intent.getExtras().getDouble("dbMontant");
-        Double res = Convert.convertir(strDepart, strArrivee, dbMontant);
+        Double res = Convert.convertir(strDepart, strArrivee, dbMontant,this);
         String strRes = String.format("%.2f",res);
         String strMontant = String.format("%.2f",dbMontant);
         String msg = strMontant + " " + strDepart + " fait " + strRes + " " + strArrivee;

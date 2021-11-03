@@ -1,5 +1,7 @@
 package metier;
 
+import android.content.Context;
+
 import java.util.*;
 
 /**
@@ -13,7 +15,7 @@ public class Convert
 	private static Map<String, Double> conversionTable = new HashMap<String, Double>();
 	
 	// static fonctionne comme un constructeur dans une classe static
-	static                                                                                                     
+	/*static
    	{                                                                                                                                               
    		conversionTable.put("Livres", Double.valueOf(0.6404));
    		conversionTable.put("Euro", Double.valueOf(0.7697));                                          
@@ -21,7 +23,7 @@ public class Convert
    		conversionTable.put("Yen", Double.valueOf(76.6908));                                              
    		conversionTable.put("Francs CFA", Double.valueOf(503.17));                                         
    		conversionTable.put("Dollars US", Double.valueOf(1.0));                                                    
-   	}  
+   	}*/
 	
 	/**
 	 * Retourne un Double correspondant au <b>montant</b> en devise <b>source</b> converti en devise <b>cible</b></b>
@@ -30,10 +32,10 @@ public class Convert
 	 * @param montant
 	 * @return le montant en devise cible
 	 */
-   	public static double convertir(String source, String cible, double montant)                                                                                          
+   	public static double convertir(String source, String cible, double montant, Context context)
    	{                                                                                                          
-   		double tauxSource = conversionTable.get(source);                    
-   		double tauxCible = conversionTable.get(cible);                    
+   		double tauxSource = getConversionTable(context).get(source);
+   		double tauxCible =  getConversionTable(context).get(cible);
    		double tauxConversion = tauxCible/tauxSource;	                                                       
    		return (montant * tauxConversion) ;                                                               
    	}           
@@ -42,8 +44,15 @@ public class Convert
    	 * Accesseur du tableau associatif des devises
    	 * @return une référence sur la table des devises
    	 */
-   	public static Map<String, Double> getConversionTable()
+   	public static Map<String, Double> getConversionTable(Context context)
    	{
-   		return conversionTable;	
+   		if(conversionTable.isEmpty()){
+   			DeviseBDD maDeviseBdd= new DeviseBDD(context);
+   			maDeviseBdd.open();
+   			conversionTable= maDeviseBdd.getAll(context);
+
+		}
+   		return conversionTable;
+
    	}                                                                                               
 }                                                                                                         

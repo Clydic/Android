@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             try {
 
                 this.dbMontant = Double.valueOf(strMontant);
-                Double res = Convert.convertir(strDepart, strArrivee, dbMontant);
+                Double res = Convert.convertir(strDepart, strArrivee, dbMontant,this);
                 Intent intent = new Intent(this, ConvertirActivity.class);
                 // We make the message wich will be displayed in the other Activity
                 String msg = strMontant + " " + strDepart + " fait " + res + " " + strArrivee;
@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Load currencies in an array
     protected void  chargeDevises(){
-        Map<String,Double>  tableau = Convert.getConversionTable();
+        Map<String,Double>  tableau = Convert.getConversionTable(this);
         this.arrayOfKey = new ArrayList<String>(tableau.keySet());
 
     }
