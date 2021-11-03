@@ -1,7 +1,6 @@
 package fr.afpa.gessort;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
