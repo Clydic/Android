@@ -3,7 +3,15 @@
     <item android:title="@string/add_spell"
         android:id="@+id/addspell"/>
     <item android:title="@string/settings"
-        android:id="@+id/setting"/>
+        android:id="@+id/setting">
+        <menu android:id="@+id/sousmenu">
+            <item android:title="Changer de langue"
+                android:id="@+id/language"/>
+            <item android:title="Changer de thème"
+                android:id="@+id/theme"/>
+        </menu>
+    </item>
+
     <item android:title="@string/leave"
         android:id="@+id/quit"/>
 </menu>

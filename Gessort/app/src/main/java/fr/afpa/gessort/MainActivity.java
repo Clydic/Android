@@ -15,6 +15,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import metier.ListOfSpellMgr;
 import metier.Spell;
 
@@ -29,14 +32,15 @@ public class MainActivity extends AppCompatActivity {
         registerForContextMenu((ImageView)findViewById(R.id.imageMenu));
         title= findViewById(R.id.Title);
         listViewOfSpell = findViewById(R.id.list_of_sort);
-        loadListOfSpell(ListOfSpellMgr.getListOfSpell(),listViewOfSpell);
+        //Log.i(TAG,ListOfSpellMgr.getListOfSpell(this).get(0)+"");
+        loadListOfSpell(ListOfSpellMgr.getListOfSpell(this),listViewOfSpell);
         title.setVisibility(View.VISIBLE);
-        String CREATE_BDD= String.format("CREATE TABLE %s (%s2 integer primary key " +
+        String CREATE_BDD= String.format("CREATE TABLE %s (%s integer primary key " +
                 "autoincrement, %s text not null, %s text not null",TAG,"ID","NAME","SHORT_DESCRIPTION");
         Log.i(TAG , CREATE_BDD);
     }
 
-    public void loadListOfSpell(Spell[] list_to_load, ListView list_view){
+    public void loadListOfSpell(ArrayList<Spell> list_to_load, ListView list_view){
         ArrayAdapter<Spell> arrayAdapter= new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,list_to_load);
 
         list_view.setAdapter(arrayAdapter);
