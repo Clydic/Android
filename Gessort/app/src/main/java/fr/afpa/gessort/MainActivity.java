@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import metier.CustomListAdapter;
 import metier.ListOfSpellMgr;
 import metier.Spell;
 
@@ -33,17 +35,21 @@ public class MainActivity extends AppCompatActivity {
         title= findViewById(R.id.Title);
         listViewOfSpell = findViewById(R.id.list_of_sort);
         //Log.i(TAG,ListOfSpellMgr.getListOfSpell(this).get(0)+"");
+
         loadListOfSpell(ListOfSpellMgr.getListOfSpell(this),listViewOfSpell);
-        title.setVisibility(View.VISIBLE);
-        String CREATE_BDD= String.format("CREATE TABLE %s (%s integer primary key " +
-                "autoincrement, %s text not null, %s text not null",TAG,"ID","NAME","SHORT_DESCRIPTION");
-        Log.i(TAG , CREATE_BDD);
     }
 
     public void loadListOfSpell(ArrayList<Spell> list_to_load, ListView list_view){
-        ArrayAdapter<Spell> arrayAdapter= new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,list_to_load);
 
-        list_view.setAdapter(arrayAdapter);
+        list_view.setAdapter(new CustomListAdapter(this,list_to_load));
+        list_view.setOnItemClickListener((new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object object = listViewOfSpell.getItemAtPosition(position);
+                Spell spell =(Spell) object;
+                //findViewById(R.id.textofshortdescr).setVisibility(View.VISIBLE);
+            }
+        }));
 
     }
 
