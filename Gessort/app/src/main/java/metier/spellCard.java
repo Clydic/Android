@@ -31,6 +31,7 @@ public class spellCard extends AppCompatActivity {
 
     }
 
+
     protected void loadCardSpell(Spell spell){
        spellCardName.setText(spell.getName());
        spellCardDescription.setText(spell.getShortDescription());

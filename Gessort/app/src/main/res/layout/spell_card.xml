@@ -5,70 +5,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="horizontal"
+    android:background="@drawable/parchment"
     android:layout_height="match_parent">
 
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="cLeave"
-        app:srcCompat="@android:drawable/ic_menu_revert"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
-
-    <TableLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="322dp"
-        tools:ignore="MissingConstraints">
+        tools:layout_editor_absoluteY="342dp">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/name_card_spell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:theme="@style/fontColor"
+            android:fontFamily="@font/magic_wand"
+            android:textSize="81sp"
+            android:text="@string/label_name"
+            tools:ignore="MissingConstraints" />
 
-            <TextView
-                android:id="@+id/label_name_card_spell"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/label_name" />
+        <FrameLayout
 
-            <TextView
-                android:id="@+id/name_card_spell"
-                android:layout_width="wrap_content"
+            android:layout_width="414dp"
+            android:background="#8BAC8444"
+            android:layout_height="329dp">
+
+            <TableLayout
+                android:id="@+id/listCaract"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                tools:ignore="InvalidId" />
-        </TableRow>
+                tools:ignore="MissingConstraints">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/label_description_card_spell"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label_description" />
+                </TableRow>
 
-            <TextView
-                android:id="@+id/description_card_spell"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:text="TextView"
-                tools:ignore="InvalidId" />
-        </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/label_description_card_spell"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_description" />
+
+                    <TextView
+                        android:id="@+id/description_card_spell"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:singleLine="false"
+                        android:text="TextView"
+                        tools:ignore="InvalidId" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </TableLayout>
+
+        </FrameLayout>
+
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:onClick="cLeave"
+            app:srcCompat="@android:drawable/ic_menu_revert"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
