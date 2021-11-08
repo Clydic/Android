@@ -9,4 +9,6 @@
     <string name="leave">Quitter</string>
     <string name="change_language">Changer de langue</string>
     <string name="change_theme">Changer de Thème</string>
+    <string name="label_name">Nom : </string>
+    <string name="label_description">Description : </string>
 </resources>
