@@ -3,12 +3,12 @@ package metier;
 import android.util.Log;
 
 public class Spell {
-    private String name;
-    private String shortDesctiption;
+    private String spellName;
+    private String shortDescription;
 
-    public Spell(String name_to_define, String short_description_to_define){
-        this.setName(name_to_define);
-        this.setShortDesctiption(short_description_to_define);
+    public Spell(String spellName_to_define, String short_description_to_define){
+        this.setName(spellName_to_define);
+        this.setShortDescription(short_description_to_define);
         Log.i("Message : ","Le Sort "+this.getName()+" est bien créé");
     }
 
@@ -19,27 +19,27 @@ public class Spell {
      */
 
     public String getName(){
-       return this.name;
+       return this.spellName;
     }
 
-    public String getShortDesctiption(){
-        return  this.shortDesctiption;
+    public String getShortDescription(){
+        return  this.shortDescription;
     }
 
     /**
      * @return String
      */
 
-    public void setName(String nameToSet){
-         this.name=nameToSet;
+    public void setName(String spellNameToSet){
+         this.spellName=spellNameToSet;
     }
 
-    public void setShortDesctiption(String shortDesctiptionToSet){
-        this.shortDesctiption= shortDesctiptionToSet;
+    public void setShortDescription(String shortDescriptionToSet){
+        this.shortDescription= shortDescriptionToSet;
     }
 
     public String toString(){
-        String msg= this.name+ " :\n " + this.shortDesctiption;
+        String msg= this.spellName+ " :\n " + this.shortDescription;
         return msg;
     }
 }
