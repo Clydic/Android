@@ -6,6 +6,7 @@ public class Spell {
     private String spellName;
     private String shortDescription;
 
+
     public Spell(String spellName_to_define, String short_description_to_define){
         this.setName(spellName_to_define);
         this.setShortDescription(short_description_to_define);

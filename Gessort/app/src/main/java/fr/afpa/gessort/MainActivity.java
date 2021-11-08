@@ -44,7 +44,13 @@ public class MainActivity extends AppCompatActivity {
         listViewOfSpell = findViewById(R.id.list_of_sort);
         //Log.i(TAG,ListOfSpellMgr.getListOfSpell(this).get(0)+"");
 
-        loadListOfSpell(ListOfSpellMgr.getListOfSpell(this),listViewOfSpell);
+        Log.i(TAG,"count : " + listViewOfSpell.getCount());
+        if(listViewOfSpell.getCount()==0){
+            Log.i(TAG,"count : " + listViewOfSpell.getCount());
+
+            loadListOfSpell(ListOfSpellMgr.getListOfSpell(this),listViewOfSpell);
+        }
+
 
     }
 
@@ -106,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadListOfSpell(ArrayList<Spell> list_to_load, ListView list_view){
         this.clAdapter = new CustomListAdapter(this,list_to_load);
-        list_view.setAdapter(this.clAdapter);
         final Intent intent = new Intent(this, spellCard.class);
+        list_view.setAdapter(this.clAdapter);
         list_view.setOnItemClickListener((new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -125,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
         }));
 
     }
+
 
 
 }
