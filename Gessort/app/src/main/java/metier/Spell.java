@@ -20,6 +20,7 @@ public class Spell {
     public  String spellCompleteDescription;
 
 
+
     public Spell(String spellName_to_define,
                  String short_description_to_define,
                  String branch_to_define,

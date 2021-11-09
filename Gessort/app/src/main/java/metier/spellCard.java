@@ -14,7 +14,10 @@ import metier.ListOfSpellMgr;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import androidx.annotation.RequiresApi;
+
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.Array;
@@ -27,6 +30,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+
 import fr.afpa.gessort.R;
 
 public class spellCard extends AppCompatActivity {
@@ -36,25 +40,30 @@ public class spellCard extends AppCompatActivity {
     private Map<String,String> listOfLabel;
     private TableLayout tableCarac;
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+
+   
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spell_card);
+        /*ListOfLabel = (ArrayList<String>) Arrays.asList("Nom",
+                "Branche",
+                "Registre",
+                "Niveau",
+                "Temps d'invocation",
+               "Cible",
+                "Portée",
+                "Jet de sauvegarde",
+                "Résistance à la magie",
+                "Courte des description",
+                "Description Complète");*/
+
         Intent thisIntent = getIntent();
         int id = Objects.requireNonNull(thisIntent.getExtras()).getInt("id");
 
         ArrayList<Spell> listOfSpell;
         listOfSpell = ListOfSpellMgr.getListOfSpell(this);
-        /*listOfLabel =  (
-                "Branche : ",
-                "Niveau : ",
-                "Temps d'invocation : ",
-                "Durée : ",
-                "Cible : ",
-                "Portée : ",
-                "Jet de sauvegarde : ",
-                "Résistance à la magie : ",
-                "Description Complète : ");*/
+   
         spellCardName=findViewById(R.id.name_card_spell);
         tableCarac = findViewById(R.id.listCaract);
         loadCardSpell((Spell) listOfSpell.get(id));
