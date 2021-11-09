@@ -155,15 +155,15 @@ public class Spell {
 
     public Map<String,String> getAllAttr(){
         Map<String,String> mapSpell = new HashMap<String, String>();
-        mapSpell.put("Branche  ",this.getSpellBranch());
-        mapSpell.put("Niveau  ",getSpellLevel());
-        mapSpell.put("Temps d'invocation  ",getSpellInvocationTime());
-        mapSpell.put("Durée : ",getSpellDuration());
-        mapSpell.put("Cible  ",getSpellTarget());
-        mapSpell.put("Portée  ",getSpellRange());
-        mapSpell.put("Jet de sauvegarde  ",getSpellBackup());
-        mapSpell.put("Résistance à la magie  ",getSpellMagicResistance());
-        mapSpell.put("Description Complète  ",getSpellCompleteDescription());
+        mapSpell.put("Branche",this.getSpellBranch());
+        mapSpell.put("Niveau",getSpellLevel());
+        mapSpell.put("Temps d'invocation",getSpellInvocationTime());
+        mapSpell.put("Durée",getSpellDuration());
+        mapSpell.put("Cible",getSpellTarget());
+        mapSpell.put("Portée",getSpellRange());
+        mapSpell.put("Jet de sauvegarde",getSpellBackup());
+        mapSpell.put("Résistance à la magie",getSpellMagicResistance());
+        mapSpell.put("Description Complète",getSpellCompleteDescription());
 
         return mapSpell;
     }

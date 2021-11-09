@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -80,13 +81,25 @@ public class spellCard extends AppCompatActivity {
            TextView tvValues = new TextView(this);
            TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.WRAP_CONTENT);
            tvKey.setLayoutParams(params);
-           tvValues.setText(arrayList.get(key));
            tvValues.setLayoutParams(params);
            tvValues.setSingleLine(false);
+           Log.i(TAG,"key : -" + key+"-");
            row.addView(tvKey);
-           row.addView(tvValues);
+           if(!key.equals("Description Complète")){
+               Log.i(TAG,"key2 : -" + key+"-");
+                tvKey.setText( key.toString());
+               tvValues.setText(arrayList.get(key));
+               row.addView(tvValues);
+           }else{
+
+               TextView tvDescription = new TextView(this);
+               tvDescription.setText(arrayList.get(key));
+               Log.i(TAG,"else ! ");
+               FrameLayout frameDescription = findViewById(R.id.frameDescription);
+               frameDescription.addView(tvDescription);
+
+           }
            tableCarac.addView(row);
-           tvKey.setText( key.toString());
 
        }
 
