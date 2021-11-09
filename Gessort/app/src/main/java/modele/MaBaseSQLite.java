@@ -1,5 +1,6 @@
 package modele;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -22,14 +23,15 @@ public class MaBaseSQLite extends SQLiteOpenHelper {
     public static final String COMPLETE_DESCRIPTION = "complete_description";
 
     public static final String CREATE_BDD= String.format("CREATE TABLE %s (%s integer primary key " +
-            "autoincrement, %s text not null, %s text );",TABLE_SPELL,ID,NAME,SHORT_DESCRIPTION);
+            "autoincrement, %s text not null, %s text, %s text, %s text,%s text, %s text, %s text, %s text, %s text, %s text, %s text  );",
+            TABLE_SPELL, ID, NAME, SHORT_DESCRIPTION, BRANCHE, LEVEL, INVOCATION_TIME,
+            RANGE, DURATION, BACKUP, TARGET, MAGIC_RESISTANCE, COMPLETE_DESCRIPTION);
     // -------------------------------
     // We fill the table for test
     // -------------------------------
-    public static final String INSERT_LUMIERE_BRULANTE = String.format("INSERT INTO %s (%s,%s,%s,%s,%s,%s,%s,%s,%s) "+
-                    "VALUES('Lumière Brulante','Envoie un rayon brulant sur un cible ','Soleil','4','action simple','moyenne','aucune','rayon','oui'," +
-                    "'\n" +
-                    "Ce sort permet au prêtre de canaliser le pouvoir de son dieu" +
+    public static final String INSERT_LUMIERE_BRULANTE = String.format("INSERT INTO %s (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) "+
+                    "VALUES('Lumière Brulante','Envoie un rayon brulant sur un cible ','Soleil','4','action simple','moyenne','instantanée','aucune','rayon','oui'," +
+                    "'Ce sort permet au prêtre de canaliser le pouvoir de son dieu" +
                     " et de le projeter sous forme d’un rayon de lumière brûlante jaillissant " +
                     "de la paume de sa main. Il doit réussir une attaque de contact à distance " +
                     "pour atteindre sa cible, qui subit alors 1d8 points de dégâts tous les deux niveaux " +
@@ -42,23 +44,23 @@ public class MaBaseSQLite extends SQLiteOpenHelper {
                     "maximum 5d6).');",
             TABLE_SPELL, NAME, SHORT_DESCRIPTION, BRANCHE, LEVEL, INVOCATION_TIME,
             RANGE, DURATION, BACKUP, TARGET, MAGIC_RESISTANCE, COMPLETE_DESCRIPTION);
-    public static final String INSERT_FACONNAGE_PIERRE = String.format("INSERT INTO %s (%s,%s,%s,%s,%s,%s,%s,%s,%s)" +
+    /*public static final String INSERT_FACONNAGE_PIERRE = String.format("INSERT INTO %s (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)" +
                     " VALUES('Façonnage de la pierre', 'Façonne la pierre selon ses envies','Transmutation(terre)'," +
                     "'3',' action simple','contact','instantannée','aucun','pierre ou objet touché, " +
-                    "dans la limite de 0.3m3 + 30dm3/niveau','non','" +
-                    "Ce sort permet d’altérer une masse rocheuse existante pour lui donner la forme choisie par le personnage. " +
+                    "dans la limite de 0.3m3 plus  30dm3/niveau','non'," +
+                    "'Ce sort permet d’altérer une masse rocheuse existante pour lui donner la forme choisie par le personnage. " +
                     "Il est ainsi possible de créer une arme en pierre, une trappe, ou encore une idole aux contours grossiers. " +
                     "Façonnage de la pierre permet également d’ouvrir une issue là où il n’y en a pas, en taillant une porte à même la pierre, " +
                     "ou encore de bloquer une porte existante en modifiant ses dimensions (si elle est en pierre) ou en déformant son chambranle. " +
                     "Le personnage peut créer des objets (coffres, etc.), mais ceux-ci restent nécessairement grossiers ; il est impossible de les fignoler. " +
-                    "Si l’objet est doté de pièces plus ou moins mobiles, il y a 30 % de chances pour qu’il ne fonctionne pas.';",TABLE_SPELL,
-            NAME,SHORT_DESCRIPTION,BRANCHE, LEVEL, INVOCATION_TIME,
-            RANGE, DURATION, BACKUP, TARGET, MAGIC_RESISTANCE, COMPLETE_DESCRIPTION);
+                    "Si l’objet est doté de pièces plus ou moins mobiles, il y a 30 % de chances pour qu’il ne fonctionne pas.');",
+            TABLE_SPELL, NAME,SHORT_DESCRIPTION,BRANCHE, LEVEL, INVOCATION_TIME,
+            RANGE, DURATION, BACKUP, TARGET, MAGIC_RESISTANCE, COMPLETE_DESCRIPTION);*/
     //public static final String INSERT_SOIN_MODEREE = String.format("INSERT INTO %s (%s,%s) " +
     //                "VALUES('Soin moderee','Soigne 3d8 plus niveau du lanceur');",TABLE_SPELL,
     //        NAME,SHORT_DESCRIPTION);
     //public static final String INSERT_FORCE_COLOSSE  = String.format("INSERT INTO %s (%s,%s) VALUES('Force du Colosse','Augmente de la Force de 8 et la Con de 4');",TABLE_SPELL,
-    //        NAME,SHORT_DESCRIPTION);
+           // NAME,SHORT_DESCRIPTION);
     //public static final String INSERT_INTUITION_DIVINE = String.format("INSERT INTO %s (%s,%s) VALUES('Intuition Divine','Ajoute un BONUS de 10 à un test de connaissance');",TABLE_SPELL,
     //        NAME,SHORT_DESCRIPTION);
     //public static final String INSERT_SOIN_LEGER = String.format("INSERT INTO %s (%s,%s) VALUES('Soin léger','Soigne 1d8 plus niveau du lanceur');",TABLE_SPELL,
@@ -76,7 +78,7 @@ public class MaBaseSQLite extends SQLiteOpenHelper {
         db.execSQL(CREATE_BDD);
 
         Log.i (TAG, "Peuplement de la base");
-        db.execSQL(INSERT_FACONNAGE_PIERRE);
+        //db.execSQL(INSERT_FACONNAGE_PIERRE);
         //db.execSQL(INSERT_FORCE_COLOSSE);
         //db.execSQL(INSERT_INTUITION_DIVINE);
         db.execSQL(INSERT_LUMIERE_BRULANTE);
