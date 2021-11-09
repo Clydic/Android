@@ -46,10 +46,13 @@ public class MainActivity extends AppCompatActivity {
 
         Log.i(TAG,"count : " + listViewOfSpell.getCount());
         if(listViewOfSpell.getCount()==0){
-            Log.i(TAG,"count : " + listViewOfSpell.getCount());
 
+            ListOfSpellMgr.clearListOfSpell();
+            Log.i(TAG,"count : " + listViewOfSpell.getCount());
             loadListOfSpell(ListOfSpellMgr.getListOfSpell(this),listViewOfSpell);
         }
+
+
 
 
     }
@@ -58,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Log.i("TAG","onResumeMainactivity");
         this.clAdapter.notifyDataSetChanged(); // Recharge l'adapter
+        ListOfSpellMgr.clearListOfSpell();
+        loadListOfSpell(ListOfSpellMgr.getListOfSpell(this),listViewOfSpell);
 
     }
 
