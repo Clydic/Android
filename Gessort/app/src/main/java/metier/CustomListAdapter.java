@@ -58,7 +58,7 @@ public  class CustomListAdapter extends BaseAdapter {
         }
 
         Spell spell = this.listSpell.get(position);
-        holder.spellNameView.setText(spell.getName());
+        holder.spellNameView.setText(spell.getName()+" : ");
         holder.shortDescriptionView.setText(spell.getShortDescription());
 
 

@@ -11,4 +11,7 @@
     <string name="change_theme">Changer de Thème</string>
     <string name="label_name">Nom : </string>
     <string name="label_description">Description : </string>
+
+    <!--Form view-->
+    <string name="formtitle">Ajouter un Sort</string>
 </resources>
