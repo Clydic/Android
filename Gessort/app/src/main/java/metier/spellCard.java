@@ -82,6 +82,7 @@ public class spellCard extends AppCompatActivity {
            TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.WRAP_CONTENT);
            tvKey.setLayoutParams(params);
            tvValues.setLayoutParams(params);
+           params.leftMargin=5;
            tvValues.setSingleLine(false);
            Log.i(TAG,"key : -" + key+"-");
            row.addView(tvKey);

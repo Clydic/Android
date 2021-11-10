@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="horizontal"
     android:background="@drawable/parchment"
-    android:scrollbarTrackVertical="@color/colorPrimaryDark"
     android:layout_height="match_parent">
 
 
@@ -14,12 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="342dp">
 
         <TextView
-            android:id="@+id/name_card_spell"
+            android:id="@+id/titleForm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -36,28 +35,11 @@
             android:layout_height="wrap_content">
 
             <TableLayout
-                android:id="@+id/listCaract"
+                android:id="@+id/form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:ignore="MissingConstraints">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-
-                </TableRow>
-
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
             </TableLayout>
 
         </FrameLayout>
@@ -66,21 +48,40 @@
         <FrameLayout
             android:id="@+id/frameDescription"
             android:layout_width="match_parent"
-            android:layout_height="331dp"
+            android:layout_height="wrap_content"
             android:background="#8BAC8444">
 
         </FrameLayout>
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:contentDescription="Bouton retour pour retourner à l'accueil"
-            android:onClick="cLeave"
-            app:srcCompat="@android:drawable/ic_menu_revert"
-            android:background="@color/colorPrimaryDark"
-            tools:ignore="MissingConstraints" />
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:background="@color/colorPrimaryDark"
+                app:srcCompat="@android:drawable/ic_menu_directions"
+                android:layout_alignParentRight="true" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Bouton menu, rester appuyer"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:background="@color/colorPrimaryDark"
+                android:onClick="cLeave"
+                app:srcCompat="@android:drawable/ic_menu_revert"
+                tools:ignore="MissingConstraints"
+                android:layout_alignParentLeft="true" />
+
+        </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>

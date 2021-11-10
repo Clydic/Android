@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import metier.CustomListAdapter;
+import metier.Form;
 import metier.ListOfSpellMgr;
 import metier.Spell;
 import metier.spellCard;
@@ -85,7 +86,10 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.addspell:
 
+                View vItem = (View) item.getActionView();
+                addSpell(vItem);
                 return true;
+
 
             case R.id.setting:
                 return true;
@@ -137,6 +141,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void addSpell(View v){
+        final Intent intentAdd = new Intent(this,Form.class);
+        startActivity(intentAdd);
 
+    }
 
 }
