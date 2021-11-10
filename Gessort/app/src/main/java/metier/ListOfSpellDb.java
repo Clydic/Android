@@ -1,5 +1,6 @@
 package metier;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,7 +8,10 @@ import android.util.Log;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import modele.MaBaseSQLite;
 
@@ -19,6 +23,7 @@ public class ListOfSpellDb {
     private static ArrayList<Spell> list_of_spell=new ArrayList<Spell>();
     private SQLiteDatabase bdd;
     private MaBaseSQLite maBaseSQLite;
+
 
     public ListOfSpellDb (Context context){
         maBaseSQLite = new MaBaseSQLite(context, BDD_NAME,null, DB_VERSION);
@@ -35,7 +40,14 @@ public class ListOfSpellDb {
     }
 
 
+    //////////////////Applicative Method////////////////////////
 
+    /**
+     * Get all spell which are in the Data base et return them in an
+     * ArrayList of Spell object
+     * @param context
+     * @return ArrayList<Spell>
+     */
     public ArrayList<Spell> getAllSpell(Context context){
         Log.i(TAG,"getListOfSpell");
         String sql = String.format("select %s, %s, %s,%s,%s,%s,%s,%s,%s,%s,%s from %s",
@@ -73,7 +85,17 @@ public class ListOfSpellDb {
                     String magicResistance= cursor.getString(9);
                     String completeDescription = cursor.getString(10);
 
-                    Spell spell =new Spell(name,shortDescription,branch,level,invocationTime,duration,target,range,backup,magicResistance,completeDescription);
+                    Spell spell =new Spell(name,
+                            shortDescription,
+                            branch,
+                            level,
+                            invocationTime,
+                            duration,
+                            target,
+                            range,
+                            backup,
+                            magicResistance,
+                            completeDescription);
                     this.list_of_spell.add(spell);
 
                 }while (cursor.moveToNext());
@@ -83,5 +105,26 @@ public class ListOfSpellDb {
         //Log.i(TAG,list_of_spell+"");
         return this.list_of_spell;
     }
+
+
+    public long insertSpell(ArrayList<String> listOfValue){
+        String srt;
+        this.open();
+        // WE create a ContentValue in order to insert it into the table
+        ContentValues values = new ContentValues();
+        // We put the values into the ContentValues
+        /*for(Map.Entry<String,String> entry :mapAllAtrr.entrySet()) {
+            values.put(entry.getKey(),entry.getValue());
+        }*/
+                for(int i=0;i<listOfValue.size();i++){
+                Log.i(TAG,MaBaseSQLite.LISTOFCOLUMNS.get(i) + " , " + listOfValue.get(i));
+               values.put(MaBaseSQLite.LISTOFCOLUMNS.get(i),listOfValue.get(i));
+            }
+        long id =  bdd.insert(TABLE_SPELL,null,values);
+        bdd.close();
+        return id;
+    }
+
+
 }
 

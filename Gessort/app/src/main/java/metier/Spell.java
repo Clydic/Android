@@ -4,6 +4,7 @@ import android.util.Log;
 
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Spell {
@@ -18,10 +19,29 @@ public class Spell {
     public  String spellBackup;
     public  String spellMagicResistance;
     public  String spellCompleteDescription;
+    private Integer NBOFATTR=11;
 
 
 
+   public Spell(List<String> list_to_load){
+       //if(list_to_load.size()==NBOFATTR)
+       //{
+           this.setName(list_to_load.get(0));
+           this.setShortDescription(list_to_load.get(1));
+           this.setSpellBranch(list_to_load.get(2));
+           this.setSpellLevel(list_to_load.get(3));
+           this.setSpellInvocationTime(list_to_load.get(4));
+           this.setSpellRange(list_to_load.get(5));
+           this.setSpellDuration(list_to_load.get(6));
+           this.setSpellBackup(list_to_load.get(7));
+           this.setSpellTarget(list_to_load.get(8));
+           this.setSpellMagicResistance(list_to_load.get(9));
+           this.setSpellCompleteDescription(list_to_load.get(10));
+           Log.i("Message : ","Le Sort "+this.getName()+" est bien créé");
+       //}
+   }
     public Spell(String spellName_to_define,
+
                  String short_description_to_define,
                  String branch_to_define,
                  String level_to_define,
@@ -152,9 +172,15 @@ public class Spell {
      */
     public void setSpellCompleteDescription(String str) { this.spellCompleteDescription = str;}
 
-
+    /**
+     * Get all attribut of this class
+     * @return Map<String,String>
+     */
     public Map<String,String> getAllAttr(){
+
         Map<String,String> mapSpell = new HashMap<String, String>();
+        mapSpell.put("Nom",this.getName());
+        mapSpell.put("Courte description",this.getShortDescription());
         mapSpell.put("Branche",this.getSpellBranch());
         mapSpell.put("Niveau",getSpellLevel());
         mapSpell.put("Temps d'invocation",getSpellInvocationTime());

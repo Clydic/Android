@@ -21,13 +21,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="metier.spellCard"
+            android:name="metier.spellCardActivity"
 
             android:screenOrientation="portrait"
             tools:ignore="ExtraText,LockedOrientationActivity" />
 
         <activity
-            android:name="metier.Form"
+            android:name="metier.FormActivity"
 
             android:screenOrientation="portrait"
             tools:ignore="ExtraText,LockedOrientationActivity" />

@@ -34,7 +34,7 @@ import java.util.Objects;
 
 import fr.afpa.gessort.R;
 
-public class spellCard extends AppCompatActivity {
+public class spellCardActivity extends AppCompatActivity {
     private TextView spellCardName;
     private TextView spellCardDescription;
     private String TAG = "spellCard";
@@ -73,7 +73,6 @@ public class spellCard extends AppCompatActivity {
 
     protected void loadCardSpell(Spell spell ){
         Map<String,String> arrayList = spell.getAllAttr();
-       spellCardName.setText(spell.getName());
        for (Object key : arrayList.keySet()){
 
            TableRow row = new TableRow(this);
@@ -86,18 +85,22 @@ public class spellCard extends AppCompatActivity {
            tvValues.setSingleLine(false);
            Log.i(TAG,"key : -" + key+"-");
            row.addView(tvKey);
-           if(!key.equals("Description Complète")){
-               Log.i(TAG,"key2 : -" + key+"-");
-                tvKey.setText( key.toString());
-               tvValues.setText(arrayList.get(key));
-               row.addView(tvValues);
-           }else{
-
+           if(key.equals("Description Complète")) {
                TextView tvDescription = new TextView(this);
                tvDescription.setText(arrayList.get(key));
                Log.i(TAG,"else ! ");
                FrameLayout frameDescription = findViewById(R.id.frameDescription);
                frameDescription.addView(tvDescription);
+           }else if(key.equals("Nom")) {
+               spellCardName.setText(spell.getName());
+           }else if(key.equals("Courte description")){
+               int nothing = 0;
+           }else{
+               Log.i(TAG, "key2 : -" + key + "-");
+               tvKey.setText(key.toString());
+               tvValues.setText(arrayList.get(key));
+               row.addView(tvValues);
+
 
            }
            tableCarac.addView(row);

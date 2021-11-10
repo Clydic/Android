@@ -6,6 +6,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class MaBaseSQLite extends SQLiteOpenHelper {
     public static final String TAG = "MaBaseSQLite";
     public static final String TABLE_SPELL = "table_spell";
@@ -21,9 +25,22 @@ public class MaBaseSQLite extends SQLiteOpenHelper {
     public static final String TARGET ="target";
     public static final String MAGIC_RESISTANCE = "magic_resistance";
     public static final String COMPLETE_DESCRIPTION = "complete_description";
+    public static final List<String> LISTOFCOLUMNS = (List<String>) Arrays.asList(
+    MaBaseSQLite.NAME,
+    MaBaseSQLite.SHORT_DESCRIPTION,
+    MaBaseSQLite.BRANCHE,
+    MaBaseSQLite.LEVEL,
+    MaBaseSQLite.INVOCATION_TIME,
+    MaBaseSQLite.RANGE,
+    MaBaseSQLite.DURATION,
+    MaBaseSQLite.BACKUP,
+    MaBaseSQLite.TARGET,
+    MaBaseSQLite.MAGIC_RESISTANCE,
+    MaBaseSQLite.COMPLETE_DESCRIPTION);
+
 
     public static final String CREATE_BDD= String.format("CREATE TABLE %s (%s integer primary key " +
-            "autoincrement, %s text not null, %s text, %s text, %s text,%s text, %s text, %s text, %s text, %s text, %s text, %s text  );",
+                    "autoincrement, %s text not null, %s text, %s text, %s text,%s text, %s text, %s text, %s text, %s text, %s text, %s text  );",
             TABLE_SPELL, ID, NAME, SHORT_DESCRIPTION, BRANCHE, LEVEL, INVOCATION_TIME,
             RANGE, DURATION, BACKUP, TARGET, MAGIC_RESISTANCE, COMPLETE_DESCRIPTION);
     // -------------------------------
@@ -91,4 +108,5 @@ public class MaBaseSQLite extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE " + TABLE_SPELL+";");
 
     }
+
 }
