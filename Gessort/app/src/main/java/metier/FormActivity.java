@@ -127,6 +127,7 @@ public class FormActivity extends AppCompatActivity {
       finish();
    }
 
+
    /**
     * Insert a spell into the DataBase
     * @param v
@@ -150,9 +151,9 @@ public class FormActivity extends AppCompatActivity {
         finish();
 
      }catch (Exception e){
+
          // Display error message into a toast
         Toast.makeText(getBaseContext(),e.getMessage(), LENGTH_SHORT).show();
      }
    }
-
 }

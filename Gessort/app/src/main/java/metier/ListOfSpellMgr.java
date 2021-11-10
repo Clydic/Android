@@ -39,6 +39,7 @@ public class ListOfSpellMgr {
         listOfSpell.clear();
     }
 
+
     /**
      * Get values from FormActivity and call insert method from ListOfSpellDB
      * @param context
@@ -55,11 +56,14 @@ public class ListOfSpellMgr {
             // Call the insert method of maListeOfSpellDb
             maListeOfSpellDb.insertSpell(list_to_load);
             // Close the Data base
+
             maListeOfSpellDb.close();
             return true;
         }
         Log.i(TAG,"Le sort existe déjà");
+
         // Close the data base
+
         maListeOfSpellDb.close();
         return false;
     }

@@ -22,7 +22,9 @@ public class Spell {
     private Integer NBOFATTR=11;
 
 
+
     /////////////////Constructors///////////////
+
    public Spell(List<String> list_to_load){
        //if(list_to_load.size()==NBOFATTR)
        //{

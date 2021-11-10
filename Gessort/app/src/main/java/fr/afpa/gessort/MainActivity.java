@@ -152,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialisation
         this.clAdapter = new CustomListAdapter(this,list_to_load);
         final Intent intent = new Intent(this, spellCardActivity.class);
+
         // Traitement
         list_view.setAdapter(this.clAdapter);
         list_view.setOnItemClickListener((new AdapterView.OnItemClickListener() {
@@ -167,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
         }));
 
     }
+
 
     /**
      * Launch FormActivity

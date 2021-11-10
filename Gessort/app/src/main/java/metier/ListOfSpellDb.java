@@ -24,6 +24,7 @@ public class ListOfSpellDb {
     private SQLiteDatabase bdd;
     private MaBaseSQLite maBaseSQLite;
 
+
     /**
      * The constructor
      * @param context
@@ -117,11 +118,12 @@ public class ListOfSpellDb {
     }
 
 
-    /**
+   /**
      * Get values and call the method insert from MaBaseSQLite class
      * @param listOfValue
      * @return
      */
+
     public long insertSpell(ArrayList<String> listOfValue){
         String srt;
         this.open();

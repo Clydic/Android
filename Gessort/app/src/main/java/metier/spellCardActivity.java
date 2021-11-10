@@ -43,12 +43,12 @@ public class spellCardActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 
 
+
     @Override
     /**
      * Create the spellCardActivity
      */
     protected void onCreate(Bundle savedInstanceState){
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spell_card);
         /*ListOfLabel = (ArrayList<String>) Arrays.asList("Nom",
@@ -63,6 +63,7 @@ public class spellCardActivity extends AppCompatActivity {
                 "Courte des description",
                 "Description Complète");*/
 
+
         // Get the intent
         Intent thisIntent = getIntent();
         int id = Objects.requireNonNull(thisIntent.getExtras()).getInt("id");
@@ -76,7 +77,7 @@ public class spellCardActivity extends AppCompatActivity {
     }
 
 
-    /**
+  /**
      * Load all labels and attributs of the Spell into a table Layout
      * @param spell
      */
@@ -88,6 +89,7 @@ public class spellCardActivity extends AppCompatActivity {
            TextView tvKey = new TextView(this);
            TextView tvValues = new TextView(this);
            TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.WRAP_CONTENT);
+
            // Set parameters
            tvKey.setLayoutParams(params);
            tvValues.setLayoutParams(params);
@@ -119,6 +121,7 @@ public class spellCardActivity extends AppCompatActivity {
        }
 
     }
+
 
     /**
      * Leave the activity
