@@ -1,5 +1,6 @@
 package metier;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -38,6 +39,22 @@ public class ListOfSpellMgr {
 
     public static void clearListOfSpell(){
         listOfSpell.clear();
+    }
+
+    public static boolean insertSpell(Context context, ArrayList<String> list_to_load){
+        ListOfSpellDb maListeOfSpellDb = new ListOfSpellDb(context);
+        Log.i(TAG,"maListofdb créé");
+        Spell spell = new Spell(list_to_load);
+        maListeOfSpellDb.open();
+        if(!maListeOfSpellDb.getAllSpell(context).contains(spell)){
+            Log.i(TAG,"On insère le sort " + spell.getName());
+            maListeOfSpellDb.insertSpell(list_to_load);
+            maListeOfSpellDb.close();
+            return true;
+        }
+        Log.i(TAG,"Le sort existe déjà");
+        maListeOfSpellDb.close();
+        return false;
     }
 }
 

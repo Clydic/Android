@@ -66,6 +66,7 @@
                 android:layout_alignParentBottom="true"
                 android:background="@color/colorPrimaryDark"
                 app:srcCompat="@android:drawable/ic_menu_directions"
+                android:onClick="addSpell"
                 android:layout_alignParentRight="true" />
 
             <ImageButton
