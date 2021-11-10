@@ -15,17 +15,12 @@ import modele.MaBaseSQLite;
 public class ListOfSpellMgr {
     private static String TAG = "ListOfSpellMgr";
     private static ArrayList<Spell> listOfSpell=new ArrayList<Spell>();
-    //static {
-    //list_of_spell .add(new Spell("Lumière Brulante","Envoie un rayon brulant sur un cible"));
 
-    //new Spell("Soin Modéré","Soigne de 3d8 par niveau de lanceur de sort"),
-    //new Spell("Façonnage de la pierre","Permet de façonner la pierre"),
-    //new Spell("Intuition divine","donne un +10 dans une connaissance"),
-    //new Spell("soin léger","soigne de 1d8"),
-    //new Spell("Force du Colosse","donne +8 en force +4 en constitution")));
-    //}
-
-
+    /**
+     * Get all Spell and put them into an Arraylist
+     * @param context
+     * @return ArrayList<Spell>
+     */
     public static ArrayList<Spell> getListOfSpell(Context context) {
             Log.i(TAG,"initilisation");
             ListOfSpellDb maListeOfSpellDb = new ListOfSpellDb(context);
@@ -37,22 +32,34 @@ public class ListOfSpellMgr {
         return listOfSpell;
     }
 
+    /**
+     * Clear the list of Spell
+     */
     public static void clearListOfSpell(){
         listOfSpell.clear();
     }
 
+    /**
+     * Get values from FormActivity and call insert method from ListOfSpellDB
+     * @param context
+     * @param list_to_load
+     * @return
+     */
     public static boolean insertSpell(Context context, ArrayList<String> list_to_load){
         ListOfSpellDb maListeOfSpellDb = new ListOfSpellDb(context);
-        Log.i(TAG,"maListofdb créé");
         Spell spell = new Spell(list_to_load);
+        // Open the data base
         maListeOfSpellDb.open();
         if(!maListeOfSpellDb.getAllSpell(context).contains(spell)){
             Log.i(TAG,"On insère le sort " + spell.getName());
+            // Call the insert method of maListeOfSpellDb
             maListeOfSpellDb.insertSpell(list_to_load);
+            // Close the Data base
             maListeOfSpellDb.close();
             return true;
         }
         Log.i(TAG,"Le sort existe déjà");
+        // Close the data base
         maListeOfSpellDb.close();
         return false;
     }

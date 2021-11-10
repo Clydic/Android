@@ -42,9 +42,13 @@ public class spellCardActivity extends AppCompatActivity {
     private TableLayout tableCarac;
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 
-   
+
     @Override
+    /**
+     * Create the spellCardActivity
+     */
     protected void onCreate(Bundle savedInstanceState){
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spell_card);
         /*ListOfLabel = (ArrayList<String>) Arrays.asList("Nom",
@@ -59,6 +63,7 @@ public class spellCardActivity extends AppCompatActivity {
                 "Courte des description",
                 "Description Complète");*/
 
+        // Get the intent
         Intent thisIntent = getIntent();
         int id = Objects.requireNonNull(thisIntent.getExtras()).getInt("id");
 
@@ -71,32 +76,38 @@ public class spellCardActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Load all labels and attributs of the Spell into a table Layout
+     * @param spell
+     */
     protected void loadCardSpell(Spell spell ){
         Map<String,String> arrayList = spell.getAllAttr();
        for (Object key : arrayList.keySet()){
-
+            // Initialsiation
            TableRow row = new TableRow(this);
            TextView tvKey = new TextView(this);
            TextView tvValues = new TextView(this);
            TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.WRAP_CONTENT);
+           // Set parameters
            tvKey.setLayoutParams(params);
            tvValues.setLayoutParams(params);
-           params.leftMargin=5;
            tvValues.setSingleLine(false);
-           Log.i(TAG,"key : -" + key+"-");
            row.addView(tvKey);
            if(key.equals("Description Complète")) {
                TextView tvDescription = new TextView(this);
+               // Write the complete description into the EditText
                tvDescription.setText(arrayList.get(key));
-               Log.i(TAG,"else ! ");
+               // Put the EditText into a Frame Layout
                FrameLayout frameDescription = findViewById(R.id.frameDescription);
                frameDescription.addView(tvDescription);
            }else if(key.equals("Nom")) {
+               // Set the title
                spellCardName.setText(spell.getName());
            }else if(key.equals("Courte description")){
+               // Do nothing
                int nothing = 0;
            }else{
-               Log.i(TAG, "key2 : -" + key + "-");
+               // Set the row with label and the attribut of Spell
                tvKey.setText(key.toString());
                tvValues.setText(arrayList.get(key));
                row.addView(tvValues);
@@ -109,11 +120,12 @@ public class spellCardActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Leave the activity
+     * @param view
+     */
     public void cLeave(View view){
         finish();
     }
 
-    /*public void generateTableLayout(List listLabel, List<TextView> textViews) {
-
-    }*/
 }

@@ -24,17 +24,27 @@ public class ListOfSpellDb {
     private SQLiteDatabase bdd;
     private MaBaseSQLite maBaseSQLite;
 
-
+    /**
+     * The constructor
+     * @param context
+     */
     public ListOfSpellDb (Context context){
         maBaseSQLite = new MaBaseSQLite(context, BDD_NAME,null, DB_VERSION);
         //Log.i(TAG,this.getAllSpell(context)+"");
     }
+
+    /**
+     * Open the data base
+     */
     public  void open(){
         if(bdd==null){
             bdd = maBaseSQLite.getWritableDatabase();
         }
     }
 
+    /**
+     * Close the data base
+     */
     public void close(){
         bdd.close();
     }
@@ -107,15 +117,17 @@ public class ListOfSpellDb {
     }
 
 
+    /**
+     * Get values and call the method insert from MaBaseSQLite class
+     * @param listOfValue
+     * @return
+     */
     public long insertSpell(ArrayList<String> listOfValue){
         String srt;
         this.open();
         // WE create a ContentValue in order to insert it into the table
         ContentValues values = new ContentValues();
         // We put the values into the ContentValues
-        /*for(Map.Entry<String,String> entry :mapAllAtrr.entrySet()) {
-            values.put(entry.getKey(),entry.getValue());
-        }*/
                 for(int i=0;i<listOfValue.size();i++){
                 Log.i(TAG,MaBaseSQLite.LISTOFCOLUMNS.get(i) + " , " + listOfValue.get(i));
                values.put(MaBaseSQLite.LISTOFCOLUMNS.get(i),listOfValue.get(i));

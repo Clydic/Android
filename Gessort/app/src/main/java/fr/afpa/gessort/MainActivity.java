@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private CustomListAdapter clAdapter;
     @SuppressLint("LongLogTag")
     @Override
+    /**
+     * Le constructeur
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -56,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    /**
+     * Clear an reload the itemlist when we comme back in main activity
+     */
     public void onResume() {
         super.onResume();
         Log.i("TAG","onResumeMainactivity");
@@ -65,12 +72,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Leave the application
+     * @param v
+     */
     public void onQuitt(View v){
 
         Log.i(TAG , "onQuitt");
         Toast.makeText(getBaseContext(),"onQuitt", LENGTH_SHORT).show();
         System.exit(0);
     }
+
+    /**
+     * Create the menu
+     * @param menu
+     * @return
+     */
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         // Instanciation du menu XML spécifier en un objet  Menu
@@ -78,6 +95,11 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Function of item of menu
+     * @param item
+     * @return
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 
@@ -101,6 +123,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    /**
+     * Display the menu with a long pressing on image button
+     */
     public void onCreateContextMenu(ContextMenu menu, View v , ContextMenu.ContextMenuInfo menuInfo)
 
     {
@@ -117,28 +142,36 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Load the list of Spell into the view, each spell can be selected
+     * in order to read its description
+     * @param list_to_load
+     * @param list_view
+     */
     public void loadListOfSpell(ArrayList<Spell> list_to_load, ListView list_view){
+        // Initialisation
         this.clAdapter = new CustomListAdapter(this,list_to_load);
         final Intent intent = new Intent(this, spellCardActivity.class);
+        // Traitement
         list_view.setAdapter(this.clAdapter);
         list_view.setOnItemClickListener((new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.i(TAG, " pos : "+ position+"");
+                // Get the position of the selected item
                 Object object = listViewOfSpell.getItemAtPosition(position);
-                Spell spell =(Spell) object;
+                // Put the id into the intent in order to get into the other activity
                 intent.putExtra("id",position);
-                Toast.makeText(MainActivity.this,"Selected : " + "" + spell , LENGTH_SHORT).show();
-                //intent.putExtra("spellName",spell.getName());
-                //intent.putExtra("spellDescription",spell.getShortDescription());
+                // Start the activity spellCardActivity
                 startActivity(intent);
-
-                //findViewById(R.id.textofshortdescr).setVisibility(View.VISIBLE);
             }
         }));
 
     }
 
+    /**
+     * Launch FormActivity
+     * @param v
+     */
     public void addSpell(View v){
         final Intent intentAdd = new Intent(this, FormActivity.class);
         startActivity(intentAdd);
