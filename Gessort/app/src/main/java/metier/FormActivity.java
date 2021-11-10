@@ -127,31 +127,33 @@ public class FormActivity extends AppCompatActivity {
       finish();
    }
 
+
+   /**
+    * Insert a spell into the DataBase
+    * @param v
+    */
    public void addSpell(View v){
       Context context = this;
      Spell newSpell;
      ArrayList<String> listOfValue = new ArrayList<String>();
      Log.i(TAG, "taille : "+listOfEditText.size());
+
      for (int i = 0; i<listOfEditText.size(); i++){
-        Log.i(TAG,"get.text() : " + listOfEditText.get(i).getText());
-        Log.i(TAG,"i : " + i);
+         // Add values get from EditTexts and put them into a List
         listOfValue.add(String.valueOf(listOfEditText.get(i).getText()));
-        Log.i(TAG,"List of value : " + listOfValue.toString() );
      }
      newSpell = new Spell(listOfValue);
-     Log.i(TAG,"newspell : "+ newSpell.toString());
      try {
+       // Launch the insert method of LisOfMgr
         ListOfSpellMgr.insertSpell(context, listOfValue );
-        Log.i(TAG,"lisofvalue : " + listOfValue);
+        // Display a message to inform the user
         Toast.makeText(getBaseContext(),newSpell.getName() + " a bien été enregistré dans la base", LENGTH_SHORT).show();
         finish();
 
      }catch (Exception e){
+
+         // Display error message into a toast
         Toast.makeText(getBaseContext(),e.getMessage(), LENGTH_SHORT).show();
      }
    }
-
-    /*public void generateTableLayout(List listLabel, List<TextView> textViews) {
-
-    }*/
 }

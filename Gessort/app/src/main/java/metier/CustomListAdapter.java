@@ -25,21 +25,39 @@ public  class CustomListAdapter extends BaseAdapter {
        this.listSpell = listData;
        layoutInflater= LayoutInflater.from(aContext);
     }
+    /////////////////Getter////////////////
+
+    /**
+     * Get the number of element into the list
+     * @return
+     */
     @Override
     public int getCount() {
         return listSpell.size();
     }
 
+    /**
+     * Get the position of the item
+     * @return
+     */
     @Override
     public Object getItem(int position) {
         return listSpell.get(position);
     }
 
+    /**
+     * Get the element thanks of the id
+     * @return
+     */
     @Override
     public long getItemId(int position) {
         return position;
     }
 
+    /**
+     * Get the view
+     * @return
+     */
     @Override
     public View getView(int position,
                         View convertView,

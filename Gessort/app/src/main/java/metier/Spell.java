@@ -23,6 +23,8 @@ public class Spell {
 
 
 
+    /////////////////Constructors///////////////
+
    public Spell(List<String> list_to_load){
        //if(list_to_load.size()==NBOFATTR)
        //{
@@ -71,6 +73,7 @@ public class Spell {
     // ---------------------Setters an getters---------------------
 
     /**
+     * Get the Name
      * @return String
      */
 
@@ -78,97 +81,136 @@ public class Spell {
        return this.spellName;
     }
 
+    /**
+     * Get the Short description
+     * @return String
+     */
     public String getShortDescription(){
         return  this.shortDescription;
     }
 
     /**
-     * @return String
+     * Set the Name of Spell
      */
 
     public void setName(String spellNameToSet){
          this.spellName=spellNameToSet;
     }
 
+    /**
+     * Set the short description
+     *
+     */
     public void setShortDescription(String shortDescriptionToSet){
         this.shortDescription= shortDescriptionToSet;
     }
 
 
     /**
+     * Get the branch of Spell
      * @return String
      */
     public String getSpellBranch() {return this.spellBranch;}
     /**
+     * Get the level of Spell
      * @return String
      */
     public String getSpellLevel() {return this.spellLevel;}
+
     /**
+     * Get the invoation Time
      * @return String
      */
     public String getSpellInvocationTime() {return this.spellInvocationTime;}
+
     /**
+     * Get the duration of Spell
      * @return String
      */
     public String getSpellDuration() {return this.spellDuration;}
+
+
     /**
+     * Get the Target of Spell
      * @return String
      */
     public String getSpellTarget() {return this.spellTarget;}
+
+
     /**
+     * Get the Range of the Spell
      * @return String
      */
     public String getSpellRange() {return this.spellRange;}
+
+
     /**
+     * get the Backup of the Spell
      * @return String
      */
     public String getSpellBackup() {return this.spellBackup;}
+
+
     /**
+     * Get the Magic Resistance
      * @return String
      */
     public String getSpellMagicResistance() {return this.spellMagicResistance;}
+
+
+
     /**
+     * Get the complete Description
      * @return String
      */
     public String getSpellCompleteDescription() {return this.spellCompleteDescription;}
 
 
     /**
-     * @return String
+     * Set the Branch of the Spell
      */
     public void  setSpellBranch(String str) { this.spellBranch=str;}
 
     /**
-     * @return String
+     * Set the Level of the Spell
      */
     public void  setSpellLevel(String str) { this.spellLevel=str;}
     /**
-     * @return String
+     * Set The InvocationTime of the Spell
      */
     public void setSpellInvocationTime(String str) { this.spellInvocationTime = str;}
 
     /**
-     * @return String
+     * Set the Duration of the Spell
      */
     public void setSpellDuration(String str) { this.spellDuration = str;}
     /**
-     * @return String
+     * Set the target of the Spell
      */
     public void setSpellTarget(String str) { this.spellTarget = str;}
     /**
-     * @return String
+     * set the Range of the Spell
      */
     public void setSpellRange(String str) { this.spellRange = str;}
+
+
+
     /**
-     * @return String
+     * Set the Backup of the Spell
      */
     public void setSpellBackup(String str) { this.spellBackup = str;}
+
+
+
     /**
-     * @return String
+     * Set The magic Resistance of the Spell
      */
     public void setSpellMagicResistance(String str) { this.spellMagicResistance = str;}
+
+
+
     /**
-     * @return String
+     * Set the Complete Description of the Spell
      */
     public void setSpellCompleteDescription(String str) { this.spellCompleteDescription = str;}
 
@@ -196,7 +238,17 @@ public class Spell {
     @Override
     public String toString(){
 
-        String msg= this.spellName+ " :\n " + this.shortDescription;
+        String msg= "Nom : " + this.spellName+
+                " \nCourte description " + this.shortDescription+
+                "\nBranche : " + this.getSpellBranch() +
+                "\nNiveau : " + this.getSpellLevel() +
+                "\nTemps d'invocation" + this.getSpellInvocationTime() +
+                "\nDurée : " + this.getSpellDuration() +
+                "\nCible : " + this.getSpellTarget() +
+                "\nPortée : " + this.getSpellRange() +
+                "\nSauvegarde"+ this.getSpellBackup()+
+                "\nRésistance magique" + this.getSpellMagicResistance()+
+                "\nDescription Complète" + this.getSpellCompleteDescription();
         return msg;
     }
 }
