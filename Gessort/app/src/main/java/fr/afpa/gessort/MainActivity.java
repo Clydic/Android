@@ -13,20 +13,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import metier.CustomListAdapter;
-import metier.Form;
+import metier.FormActivity;
 import metier.ListOfSpellMgr;
 import metier.Spell;
-import metier.spellCard;
+import metier.spellCardActivity;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
@@ -121,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadListOfSpell(ArrayList<Spell> list_to_load, ListView list_view){
         this.clAdapter = new CustomListAdapter(this,list_to_load);
-        final Intent intent = new Intent(this, spellCard.class);
+        final Intent intent = new Intent(this, spellCardActivity.class);
         list_view.setAdapter(this.clAdapter);
         list_view.setOnItemClickListener((new AdapterView.OnItemClickListener() {
             @Override
@@ -142,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addSpell(View v){
-        final Intent intentAdd = new Intent(this,Form.class);
+        final Intent intentAdd = new Intent(this, FormActivity.class);
         startActivity(intentAdd);
 
     }
