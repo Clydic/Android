@@ -1,38 +1,27 @@
 package metier;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import metier.ListOfSpellMgr;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import androidx.annotation.RequiresApi;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 
 import fr.afpa.gessort.R;
+import modele.ListOfSpellMgr;
+import modele.Spell;
 
 public class spellCardActivity extends AppCompatActivity {
     private TextView spellCardName;

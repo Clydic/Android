@@ -22,8 +22,8 @@ import java.util.ArrayList;
 
 import metier.CustomListAdapter;
 import metier.FormActivity;
-import metier.ListOfSpellMgr;
-import metier.Spell;
+import modele.ListOfSpellMgr;
+import modele.Spell;
 import metier.spellCardActivity;
 
 import static android.widget.Toast.LENGTH_SHORT;

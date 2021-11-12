@@ -1,4 +1,4 @@
-package metier;
+package modele;
 
 import android.util.Log;
 

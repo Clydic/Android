@@ -1,4 +1,4 @@
-package metier;
+package modele;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,14 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import modele.MaBaseSQLite;
 
 public class ListOfSpellDb {
     private String TAG = "LisOfSpellDb";
