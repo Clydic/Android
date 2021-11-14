@@ -1,38 +1,29 @@
 package metier;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import metier.ListOfSpellMgr;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 
 import fr.afpa.gessort.R;
+import modele.ListOfSpellMgr;
+import modele.Spell;
 
 public class spellCardActivity extends AppCompatActivity {
     private TextView spellCardName;
@@ -40,6 +31,8 @@ public class spellCardActivity extends AppCompatActivity {
     private String TAG = "spellCard";
     private Map<String,String> listOfLabel;
     private TableLayout tableCarac;
+    int id;
+    ArrayList<Spell> listOfSpell;
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 
 
@@ -66,9 +59,8 @@ public class spellCardActivity extends AppCompatActivity {
 
         // Get the intent
         Intent thisIntent = getIntent();
-        int id = Objects.requireNonNull(thisIntent.getExtras()).getInt("id");
+        id = Objects.requireNonNull(thisIntent.getExtras()).getInt("id");
 
-        ArrayList<Spell> listOfSpell;
         listOfSpell = ListOfSpellMgr.getListOfSpell(this);
    
         spellCardName=findViewById(R.id.name_card_spell);
@@ -119,6 +111,34 @@ public class spellCardActivity extends AppCompatActivity {
            tableCarac.addView(row);
 
        }
+
+    }
+
+
+    /**
+     * Method called by the image button btDelete which come from form.xml
+     * @param view
+     */
+    public void delSpell(View view){
+        Spell spell = listOfSpell.get(id);
+        try{
+            Log.i(TAG,spell.getName());
+
+            // Call the method which will delete spell
+            ListOfSpellMgr.deleteSpell(this,spell);
+            // Display a message when the spell is delete
+            Toast.makeText(getBaseContext(),"Le sort " + spell.getName() + " a été supprimé.",Toast.LENGTH_LONG).show();
+            // Go back to MainActivity
+
+            this.finish();
+
+
+
+        }catch (Exception e){
+            Toast.makeText(getBaseContext(),"Le sort " + spell.getName() + " n'existe pas.",Toast.LENGTH_LONG)
+            .show();
+
+        }
 
     }
 

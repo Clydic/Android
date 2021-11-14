@@ -7,12 +7,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
-import java.util.List;
 
 import fr.afpa.gessort.R;
+import modele.Spell;
 
 public  class CustomListAdapter extends BaseAdapter {
     private ArrayList<Spell>listSpell;
@@ -55,7 +53,7 @@ public  class CustomListAdapter extends BaseAdapter {
     }
 
     /**
-     * Get the view
+     * Get the view and put Item with two TextViews into an Item list
      * @return
      */
     @Override

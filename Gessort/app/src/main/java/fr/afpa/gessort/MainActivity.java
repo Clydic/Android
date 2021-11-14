@@ -22,8 +22,8 @@ import java.util.ArrayList;
 
 import metier.CustomListAdapter;
 import metier.FormActivity;
-import metier.ListOfSpellMgr;
-import metier.Spell;
+import modele.ListOfSpellMgr;
+import modele.Spell;
 import metier.spellCardActivity;
 
 import static android.widget.Toast.LENGTH_SHORT;
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Create the menu
      * @param menu
-     * @return
+     * @return boolean
      */
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Function of item of menu
      * @param item
-     * @return
+     * @return boolean
      */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

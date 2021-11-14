@@ -13,7 +13,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,9 +20,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import fr.afpa.gessort.R;
+import modele.ListOfSpellMgr;
+import modele.Spell;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
@@ -85,18 +85,19 @@ public class FormActivity extends AppCompatActivity {
          EditText etValues = new EditText(this);
          EditText etDescription = new EditText(this);
          TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.WRAP_CONTENT);
+         TableRow.LayoutParams params2 = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT);
          // We set parameters
          tvKey.setLayoutParams(params);
-         etValues.setLayoutParams(params);
+         etValues.setLayoutParams(params2);
          etValues.setSingleLine(false);
          Log.i(TAG,"i : -" + list_to_load.get(i)+"-");
-         //Add the TextView of label into the table row
-         row.addView(tvKey);
 
+         // We set the label's text
+         tvKey.setText( list_to_load.get(i).toString()+ " : ");
          if(!list_to_load.get(i).equals("Description Complète")){
             Log.i(TAG,"i2 : -" + i+"-");
-            // We set the label's text
-            tvKey.setText( list_to_load.get(i).toString());
+            //Add the TextView of label into the table row
+            row.addView(tvKey);
             // Add the EditText into a List in order to get later all values
            listOfEditText.add(etValues);
            // Add the EditText into the TableRow
@@ -106,6 +107,8 @@ public class FormActivity extends AppCompatActivity {
             //etDescription.setText(arrayList.get(key));
             Log.i(TAG,"else ! ");
             FrameLayout frameDescription = findViewById(R.id.frameDescription);
+            //Add the TextView of label into the table row
+            frameDescription.addView(tvKey);
             // Add the EditText into a List in order to get later all values
             listOfEditText.add(etDescription);
             // Add the EditText into a FrameLayout
@@ -144,11 +147,17 @@ public class FormActivity extends AppCompatActivity {
      }
      newSpell = new Spell(listOfValue);
      try {
-       // Launch the insert method of LisOfMgr
-        ListOfSpellMgr.insertSpell(context, listOfValue );
-        // Display a message to inform the user
-        Toast.makeText(getBaseContext(),newSpell.getName() + " a bien été enregistré dans la base", LENGTH_SHORT).show();
-        finish();
+        if(newSpell.getName().equals("")){
+           Toast.makeText(getBaseContext(),"Le nom ne peut être vide", LENGTH_SHORT).show();
+
+        }else{
+
+           // Launch the insert method of LisOfMgr
+           ListOfSpellMgr.insertSpell(context, listOfValue );
+           // Display a message to inform the user
+           Toast.makeText(getBaseContext(),newSpell.getName() + " a bien été enregistré dans la base", LENGTH_SHORT).show();
+           finish();
+        }
 
      }catch (Exception e){
 
