@@ -53,7 +53,7 @@ public  class CustomListAdapter extends BaseAdapter {
     }
 
     /**
-     * Get the view
+     * Get the view and put Item with two TextViews into an Item list
      * @return
      */
     @Override

@@ -3,11 +3,13 @@ package metier;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
@@ -29,6 +31,8 @@ public class spellCardActivity extends AppCompatActivity {
     private String TAG = "spellCard";
     private Map<String,String> listOfLabel;
     private TableLayout tableCarac;
+    int id;
+    ArrayList<Spell> listOfSpell;
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 
 
@@ -55,9 +59,8 @@ public class spellCardActivity extends AppCompatActivity {
 
         // Get the intent
         Intent thisIntent = getIntent();
-        int id = Objects.requireNonNull(thisIntent.getExtras()).getInt("id");
+        id = Objects.requireNonNull(thisIntent.getExtras()).getInt("id");
 
-        ArrayList<Spell> listOfSpell;
         listOfSpell = ListOfSpellMgr.getListOfSpell(this);
    
         spellCardName=findViewById(R.id.name_card_spell);
@@ -108,6 +111,24 @@ public class spellCardActivity extends AppCompatActivity {
            tableCarac.addView(row);
 
        }
+
+    }
+
+    public void delSpell(View view){
+        Spell spell = listOfSpell.get(id);
+        try{
+            Log.i(TAG,spell.getName());
+            ListOfSpellMgr.deleteSpell(this,spell);
+            Toast.makeText(getBaseContext(),"Le sort " + spell.getName() + " a été supprimé.",Toast.LENGTH_LONG).show();
+            this.finish();
+
+
+
+        }catch (Exception e){
+            Toast.makeText(getBaseContext(),"Le sort " + spell.getName() + " n'existe pas.",Toast.LENGTH_LONG)
+            .show();
+
+        }
 
     }
 

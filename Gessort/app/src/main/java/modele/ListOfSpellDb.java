@@ -5,12 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class ListOfSpellDb {
     private String TAG = "LisOfSpellDb";
-    private static Integer DB_VERSION = 2;
+    private static Integer DB_VERSION = 1;
     private static String BDD_NAME = "gessort-db";
     public static final String TABLE_SPELL = "table_spell";
     private static ArrayList<Spell> list_of_spell=new ArrayList<Spell>();
@@ -40,7 +41,10 @@ public class ListOfSpellDb {
      * Close the data base
      */
     public void close(){
-        bdd.close();
+        if (bdd.isOpen()){
+
+            bdd.close();
+        }
     }
 
 
@@ -124,12 +128,21 @@ public class ListOfSpellDb {
         ContentValues values = new ContentValues();
         // We put the values into the ContentValues
                 for(int i=0;i<listOfValue.size();i++){
-                Log.i(TAG,MaBaseSQLite.LISTOFCOLUMNS.get(i) + " , " + listOfValue.get(i));
-               values.put(MaBaseSQLite.LISTOFCOLUMNS.get(i),listOfValue.get(i));
+                    Log.i(TAG,MaBaseSQLite.LISTOFCOLUMNS.get(i) + " , " + listOfValue.get(i));
+                   values.put(MaBaseSQLite.LISTOFCOLUMNS.get(i),listOfValue.get(i));
             }
         long id =  bdd.insert(TABLE_SPELL,null,values);
         bdd.close();
         return id;
+    }
+
+    public int deleteSpell(String name_of_spell){
+        this.open();
+        Log.i(TAG,name_of_spell);
+        String sql = String.format("DELETE FROM %s WHERE %s=%s",MaBaseSQLite.TABLE_SPELL,MaBaseSQLite.NAME,name_of_spell);
+        int nbOfRows = bdd.delete(MaBaseSQLite.TABLE_SPELL, MaBaseSQLite.NAME+ "=?",new String[]{name_of_spell});
+        this.close();
+        return nbOfRows;
     }
 
 
