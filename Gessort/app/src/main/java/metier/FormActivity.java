@@ -147,11 +147,17 @@ public class FormActivity extends AppCompatActivity {
      }
      newSpell = new Spell(listOfValue);
      try {
-       // Launch the insert method of LisOfMgr
-        ListOfSpellMgr.insertSpell(context, listOfValue );
-        // Display a message to inform the user
-        Toast.makeText(getBaseContext(),newSpell.getName() + " a bien été enregistré dans la base", LENGTH_SHORT).show();
-        finish();
+        if(newSpell.getName().equals("")){
+           Toast.makeText(getBaseContext(),"Le nom ne peut être vide", LENGTH_SHORT).show();
+
+        }else{
+
+           // Launch the insert method of LisOfMgr
+           ListOfSpellMgr.insertSpell(context, listOfValue );
+           // Display a message to inform the user
+           Toast.makeText(getBaseContext(),newSpell.getName() + " a bien été enregistré dans la base", LENGTH_SHORT).show();
+           finish();
+        }
 
      }catch (Exception e){
 
