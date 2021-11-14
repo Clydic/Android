@@ -71,16 +71,34 @@
 
         </FrameLayout>
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:contentDescription="Bouton retour pour retourner à l'accueil"
-            android:onClick="cLeave"
-            app:srcCompat="@android:drawable/ic_menu_revert"
-            android:background="@color/colorPrimaryDark"
-            tools:ignore="MissingConstraints" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btDelete"
+                android:layout_width="27dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorSecondary"
+                android:onClick="delSpell"
+                app:srcCompat="@android:drawable/ic_menu_delete" />
+
+            <ImageButton
+                android:id="@+id/btBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_alignParentEnd="true"
+                android:background="@color/colorPrimaryDark"
+                android:contentDescription="Bouton retour pour retourner à l'accueil"
+                android:onClick="cLeave"
+                app:srcCompat="@android:drawable/ic_menu_revert"
+                tools:ignore="MissingConstraints"
+                android:layout_alignParentRight="true" />
+
+        </RelativeLayout>
+
     </LinearLayout>
 
 </ScrollView>

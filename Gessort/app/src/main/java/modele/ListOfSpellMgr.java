@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import modele.ListOfSpellDb;
 import modele.Spell;
@@ -47,7 +48,7 @@ public class ListOfSpellMgr {
         Spell spell = new Spell(list_to_load);
         // Open the data base
         maListeOfSpellDb.open();
-        if(!maListeOfSpellDb.getAllSpell(context).contains(spell)){
+        if(!maListeOfSpellDb.getAllSpell(context).contains(spell.getName())){
             Log.i(TAG,"On insère le sort " + spell.getName());
             // Call the insert method of maListeOfSpellDb
             maListeOfSpellDb.insertSpell(list_to_load);
@@ -62,6 +63,25 @@ public class ListOfSpellMgr {
 
         maListeOfSpellDb.close();
         return false;
+    }
+
+    /**
+     * Method wich control if the spell exist and then call deleteSpell from ListOfSpellDb class
+     * return true if the spell is deleted, false if it doesn't exists
+     * @param context
+     * @param spell_to_delete
+     * @return boolean
+     */
+    public static boolean deleteSpell(Context context, Spell spell_to_delete){
+
+        ListOfSpellDb maListeOfSpellDb = new ListOfSpellDb(context);
+        //if (!maListeOfSpellDb.getAllSpell(context).contains(spell_to_delete.getName())){
+            Log.i(TAG,"Fonction deleteSpell");
+            maListeOfSpellDb.deleteSpell(spell_to_delete.getName());
+            return true;
+        //}
+        //return false;
+
     }
 }
 
