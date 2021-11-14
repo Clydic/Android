@@ -180,4 +180,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void displayMessageMenu(View v){
+        Toast.makeText(this,"Faites un appuie long pour faire apparaître le menu", LENGTH_SHORT).show();
+    }
+
 }
