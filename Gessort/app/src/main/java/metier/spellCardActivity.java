@@ -114,6 +114,7 @@ public class spellCardActivity extends AppCompatActivity {
 
     }
 
+
     /**
      * Method called by the image button btDelete which come from form.xml
      * @param view
@@ -122,11 +123,13 @@ public class spellCardActivity extends AppCompatActivity {
         Spell spell = listOfSpell.get(id);
         try{
             Log.i(TAG,spell.getName());
+
             // Call the method which will delete spell
             ListOfSpellMgr.deleteSpell(this,spell);
             // Display a message when the spell is delete
             Toast.makeText(getBaseContext(),"Le sort " + spell.getName() + " a été supprimé.",Toast.LENGTH_LONG).show();
             // Go back to MainActivity
+
             this.finish();
 
 
